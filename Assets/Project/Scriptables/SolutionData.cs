@@ -9,8 +9,8 @@ public enum Tag {
     NONE, A, B, C, D, E, F
 }
 
-[CreateAssetMenu(fileName = "New Solution", menuName = "Game Solution/New Solution")]
-public class GameSolution : ScriptableObject 
+[CreateAssetMenu(fileName = "New Solution", menuName = "Solution/New Solution Data")]
+public class SolutionData : ScriptableObject 
 {
     public string Title;
     public List<Tag> Tags;

@@ -17,7 +17,7 @@ public class Mastermind {
     public List<Tag> SolutionTags; // Tag list for the current game solution
     public List<Tag> KnownTags; // Tag list for tags known to player on current guess
     public int TurnsLeft;
-    public Mastermind(GameSolution solution, int turns)
+    public Mastermind(SolutionData solution, int turns)
     {
         this.SolutionTags = solution.Tags;
         foreach (Tag tag in SolutionTags) {
