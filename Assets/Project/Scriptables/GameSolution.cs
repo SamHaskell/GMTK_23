@@ -6,7 +6,7 @@ using UnityEngine;
 //TODO: Replace with the actual tags we want to use.
 
 public enum Tag {
-    A, B, C, D, E, F
+    NONE, A, B, C, D, E, F
 }
 
 [CreateAssetMenu(fileName = "New Solution", menuName = "Game Solution/New Solution")]
