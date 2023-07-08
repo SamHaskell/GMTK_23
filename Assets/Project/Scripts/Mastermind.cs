@@ -28,6 +28,7 @@ public class Mastermind {
         }
         this.TurnsLeft = turns;
     }
+
     public void MakeGuess(List<ITagble.Tag> tags)
     {
         List<Result> guess = new List<Result>();
@@ -43,7 +44,6 @@ public class Mastermind {
         }
         GuessHistory.Add(guess);
         TurnsLeft --;
-
     }
 
     public void CheckResult()
@@ -59,7 +59,7 @@ public class Mastermind {
             switch (result)
             {
                 case Result.INCORRECT:
-                    GuessResult[Result.INCORRECT] ++;
+                    GuessResult[Result.INCORRECT]++;
                     break;
                 case Result.PARTIAL:
                     GuessResult[Result.PARTIAL]++;
