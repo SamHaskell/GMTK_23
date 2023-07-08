@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TagPackage : MonoBehaviour,ITagble
+public class TagPackage : MonoBehaviour, ITagged
 {
-    public TagData PackageTagData;
+    public TagData TagData;
 
-    public ITagble.Tag GetTag()
+    public Tag GetTag()
     {
-        return PackageTagData.GetTag();
+        return TagData.Tag;
     }
 }

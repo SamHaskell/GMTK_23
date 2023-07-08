@@ -12,23 +12,23 @@ public enum Result {
 
 public class Mastermind {
     public List<List<Result>> GuessHistory; // Can change, depending on what UI needs
-    public List<ITagble.Tag> SolutionTags; // Tag list for the current game solution
-    public List<ITagble.Tag> KnownTags; // Tag list for tags known to player on current guess
+    public List<Tag> SolutionTags; // Tag list for the current game solution
+    public List<Tag> KnownTags; // Tag list for tags known to player on current guess
     public int TurnsLeft;
     public Dictionary<Result, int> GuessResult;
-
 
     public Mastermind(SolutionData solution, int turns)
     {
         this.KnownTags = new();
         GuessHistory = new();
         this.SolutionTags = solution.Tags;
-        foreach (ITagble.Tag tag in SolutionTags) {
-            this.KnownTags.Add(ITagble.Tag.NONE);
+        foreach (Tag tag in SolutionTags) {
+            this.KnownTags.Add(Tag.NONE);
         }
         this.TurnsLeft = turns;
     }
-    public void MakeGuess(List<ITagble.Tag> tags)
+
+    public void MakeGuess(List<Tag> tags)
     {
         List<Result> guess = new List<Result>();
         for (int i = 0; i < SolutionTags.Count(); i++) {
@@ -46,12 +46,13 @@ public class Mastermind {
 
     }
 
-    public void CheckResult()
+    public Dictionary<Result, int> CheckResult()
     {
         GuessResult = new Dictionary<Result, int> { {Result.CORRECT, 0 }, 
                                                     { Result.PARTIAL, 0 }, 
                                                     { Result.INCORRECT, 0 } 
                                                     };
+                                                    
         List<Result> LastGuess = GuessHistory.Last();
 
         foreach (Result result in LastGuess)
@@ -59,7 +60,7 @@ public class Mastermind {
             switch (result)
             {
                 case Result.INCORRECT:
-                    GuessResult[Result.INCORRECT] ++;
+                    GuessResult[Result.INCORRECT]++;
                     break;
                 case Result.PARTIAL:
                     GuessResult[Result.PARTIAL]++;
@@ -70,7 +71,7 @@ public class Mastermind {
             }
         }
 
- 
+        return GuessResult;
     }
 
 }
