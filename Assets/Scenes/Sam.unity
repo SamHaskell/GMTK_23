@@ -164,7 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 40852034}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: Game Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1472,7 +1472,7 @@ GameObject:
   - component: {fileID: 699536339}
   - component: {fileID: 699536341}
   m_Layer: 0
-  m_Name: InputManager
+  m_Name: Input Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3290,6 +3290,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bfdbaedc0e9264bdeb7bc321eb679ed4, type: 2}
   - {fileID: 11400000, guid: 79144643d0d7541969f4ae32a18e39ed, type: 2}
   - {fileID: 11400000, guid: 85d2492b1d14242c08193d0ac2a9743a, type: 2}
+  CustomerLogicObject: {fileID: 0}
 --- !u!1 &1281227433
 GameObject:
   m_ObjectHideFlags: 0
