@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 725809660970160055}
   - component: {fileID: 6206593565337461497}
   m_Layer: 5
-  m_Name: MaineMenu
+  m_Name: MainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3747521863716447298}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c95bfe73a6214c4da9855a6de6a4b00, type: 3}
+  m_Script: {fileID: 11500000, guid: 4d1bd4c4260b24b5c8d4607fb240da30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4672404910025033771
