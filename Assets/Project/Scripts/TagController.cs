@@ -35,7 +35,7 @@ public class TagController : MonoBehaviour
     {
         for (int i = 0; i < NumTags; i++) {
             GameObject tag = Instantiate(TagPrefab, TagTargets[i].position, TagTargets[i].rotation);
-            tag.GetComponent<TagCollision>().Controller = this;
+            tag.GetComponent<TagCollider>().Controller = this;
             tag.GetComponent<TagPackage>().TagData = TagData[0];
             _tagsLeft.Add(tag);
         }

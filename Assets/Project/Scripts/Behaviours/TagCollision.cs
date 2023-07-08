@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TagCollision : MonoBehaviour
+public class TagCollider : MonoBehaviour
 {
     public TagController Controller;
     private Rigidbody _rb;
+    private bool _hasCollided;
 
     void Start()
     {
