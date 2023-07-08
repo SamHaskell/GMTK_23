@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbc2e432239df47c6b39daf0ee792940, type: 3}
-  m_Name: New Customer
+  m_Script: {fileID: 11500000, guid: c6d548bdb2ea24acab769618bf2934e9, type: 3}
+  m_Name: Customer
   m_EditorClassIdentifier: 
   CustomerModel: {fileID: 0}
-  CustomerSolutionData: {fileID: 11400000, guid: b4eeb93f87d4f094d9ce2a5beb1e1612,
-    type: 2}
-  CustomerPatience: 5
+  CustomerSolutionData: {fileID: 0}
+  CustomerPatience: 0

@@ -11,6 +11,7 @@ public class TagController : MonoBehaviour
     public int NumTags;
     public List<Transform> TagTargets;
     public List<TagData> TagData;
+    public CustomerLogic CustomerLogicObject;
     private List<GameObject> _tagsHit;
     private List<GameObject> _tagsLeft;
 
@@ -50,9 +51,12 @@ public class TagController : MonoBehaviour
 
     public void OnTagHit(GameObject tag, Tag guess)
     {
+
         if (tag.GetComponent<TagPackage>().GetTag() == guess) {
             Debug.Log("Poggers");
         }
+
+        CustomerLogicObject.OnTagHit(guess);
         _tagsHit.Add(tag);
         _tagsLeft.Remove(tag);
     }

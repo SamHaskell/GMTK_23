@@ -17,7 +17,6 @@ public class Mastermind {
     public int TurnsLeft;
     public Dictionary<Result, int> GuessResult;
 
-
     public Mastermind(SolutionData solution, int turns)
     {
         this.KnownTags = new();
@@ -44,9 +43,10 @@ public class Mastermind {
         }
         GuessHistory.Add(guess);
         TurnsLeft --;
+
     }
 
-    public void CheckResult()
+    public Dictionary<Result, int> CheckResult()
     {
         GuessResult = new Dictionary<Result, int> { {Result.CORRECT, 0 }, 
                                                     { Result.PARTIAL, 0 }, 
@@ -71,7 +71,7 @@ public class Mastermind {
             }
         }
 
- 
+        return GuessResult;
     }
 
 }
