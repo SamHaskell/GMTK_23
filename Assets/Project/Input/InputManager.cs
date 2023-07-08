@@ -29,7 +29,7 @@ public class InputManager : MonoBehaviour
     {
         _playerControls.Enable();
         Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = false;
+        Cursor.visible = true; //TODO: SET FALSE ONCE CURSOR SPRITE CHOSEN;
     }
 
     void OnDisable()

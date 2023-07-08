@@ -4,15 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class PickableSprite : MonoBehaviour, IDragHandler, IDropHandler
+public class LaunchableSprite : MonoBehaviour, IDragHandler, IEndDragHandler
 {
     private Image _image;
     private Vector3 _origin;
     public GameObject Model;
+    public float LaunchSpeed;
     void Start()
     {
         _image = GetComponent<Image>();
         _origin = transform.position;
+    }
+
+    void Update()
+    {
+
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -20,20 +26,15 @@ public class PickableSprite : MonoBehaviour, IDragHandler, IDropHandler
         transform.position = eventData.position;
     }
 
-    public void OnDrop(PointerEventData eventData)
+    public void OnEndDrag(PointerEventData eventData)
     {
-        Vector2 delta = InputManager.MouseDelta;
         Vector2 pos = InputManager.MousePosition;
 
-        GameObject newObject = Instantiate(Model, Camera.main.ScreenToWorldPoint(pos), Quaternion.identity);
+        Ray ray = Camera.main.ScreenPointToRay(pos);
+        GameObject newObject = Instantiate(Model, ray.origin + ray.direction * 2.0f, Quaternion.identity);
         Rigidbody rb = newObject.GetComponent<Rigidbody>();
-        rb.velocity = Camera.main.transform.forward * 3.0f + Camera.main.transform.right * delta.x + Camera.main.transform.up * delta.y;
-        
+        rb.velocity = ray.direction * LaunchSpeed;
+
         transform.position = _origin;
-    }
-
-    void Update()
-    {
-
     }
 }

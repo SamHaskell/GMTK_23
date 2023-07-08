@@ -6,7 +6,7 @@ public class CursorFollow : MonoBehaviour
 {
     void Awake()
     {
-        gameObject.GetComponent<Image>().enabled = true;
+        gameObject.GetComponent<Image>().enabled = false;
     }
     void Update()
     {

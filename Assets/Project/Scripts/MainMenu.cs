@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MaineMenu : MonoBehaviour
+public class MainMenu : MonoBehaviour
 {
     //[SerializeField] private Scene newGameScene;
     public void NewGame(string newGameSceneName)
