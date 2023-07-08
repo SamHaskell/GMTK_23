@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bcfd1971d0b00445b2f790b0618faa7, type: 3}
-  m_Name: New Tag
+  m_Name: FightingTag
   m_EditorClassIdentifier: 
-  MyTag: 1
-  TagSprite: {fileID: 0}
+  MyTag: 5
+  TagSprite: {fileID: -1882338116, guid: 6acfbb89dbeca8b47ae8197fcbbcae2e, type: 3}
   TagBackground: {fileID: 0}

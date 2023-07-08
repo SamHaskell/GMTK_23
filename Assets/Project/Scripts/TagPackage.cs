@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TagPackage : MonoBehaviour,ITagble
+public class TagPackage : MonoBehaviour, ITagble
 {
     public TagData PackageTagData;
 
