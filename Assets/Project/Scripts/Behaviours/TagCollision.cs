@@ -10,7 +10,6 @@ public class TagCollision : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        _collisionFlag = false;
     }
     
     void Update()
