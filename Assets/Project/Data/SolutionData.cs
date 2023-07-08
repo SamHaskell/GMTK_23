@@ -15,5 +15,5 @@ using UnityEngine;
 public class SolutionData : ScriptableObject
 {
     public string Title;
-    public List<ITagble.Tag> Tags;
+    public List<Tag> Tags;
 }

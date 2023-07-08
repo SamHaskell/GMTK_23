@@ -8,5 +8,4 @@ public class CustomerData : ScriptableObject
     public GameObject CustomerModel;
     public SolutionData CustomerSolutionData;
     public int CustomerPatience;
-
 }
