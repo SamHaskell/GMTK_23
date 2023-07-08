@@ -6,16 +6,12 @@ public class TagCollision : MonoBehaviour
 {
     public TagController Controller;
     private Rigidbody _rb;
-    // Start is called before the first frame update
-
-
 
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         
@@ -27,7 +23,11 @@ public class TagCollision : MonoBehaviour
         if (collision.gameObject.tag == "Target") {
             _rb.AddForceAtPosition(collision.relativeVelocity, collision.transform.position, ForceMode.Impulse);
         }
-
-        Controller.OnTagHit(gameObject, collision.gameObject.GetComponent<TagPackage>().GetTag());
+        TagPackage tagPackage = collision.gameObject.GetComponent<TagPackage>();
+        if (tagPackage != null) {
+            if (Controller != null) {
+                Controller.OnTagHit(gameObject, tagPackage.GetTag());
+            }
+        }
     }
 }

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e892afa00f9547a68c1d4276f584576, type: 3}
   m_Name: FightingTagData
   m_EditorClassIdentifier: 
-  MyTag: 5
+  Tag: 5
   TagSprite: {fileID: -1882338116, guid: 6acfbb89dbeca8b47ae8197fcbbcae2e, type: 3}
   TagBackground: {fileID: 0}

@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using UnityEngine.Rendering;
-using Unity.VisualScripting;
-using System.Xml;
+using System.Runtime;
 
-public class LaunchableButton : MonoBehaviour
+public class LaunchableTagButton : MonoBehaviour
 {
     private Image _image;
     private Vector3 _origin;
     private GameObject _clone;
     public GameObject Model;
     public float LaunchSpeed;
-    public 
+    public TagData TagData;
     void Start()
     {
         _image = GetComponent<Image>();
@@ -37,6 +35,7 @@ public class LaunchableButton : MonoBehaviour
         Vector2 pos = InputManager.MousePosition;
         Ray ray = Camera.main.ScreenPointToRay(pos);
         GameObject newObject = Instantiate(Model, ray.origin + ray.direction * 0.5f, Quaternion.identity);
+        newObject.GetComponent<TagPackage>().TagData = TagData;
         Rigidbody rb = newObject.GetComponent<Rigidbody>();
         rb.isKinematic = false;
         rb.velocity = ray.direction * LaunchSpeed;

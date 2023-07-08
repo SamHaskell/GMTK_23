@@ -50,6 +50,9 @@ public class TagController : MonoBehaviour
 
     public void OnTagHit(GameObject tag, Tag guess)
     {
+        if (tag.GetComponent<TagPackage>().GetTag() == guess) {
+            Debug.Log("Poggers");
+        }
         _tagsHit.Add(tag);
         _tagsLeft.Remove(tag);
     }
