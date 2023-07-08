@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bcfd1971d0b00445b2f790b0618faa7, type: 3}
   m_Name: New Tag
   m_EditorClassIdentifier: 
-  MyTag: 0
+  MyTag: 1
   TagSprite: {fileID: 0}
   TagBackground: {fileID: 0}
