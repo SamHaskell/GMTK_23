@@ -25,8 +25,14 @@ public class PickableSprite : MonoBehaviour, IDragHandler, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
+        Vector2 delta = InputManager.MouseDelta;
+        Vector2 pos = InputManager.MousePosition;
+
+        GameObject newObject = Instantiate(Model, Camera.main.ScreenToWorldPoint(pos), Quaternion.identity);
+        Rigidbody rb = newObject.GetComponent<Rigidbody>();
+        rb.velocity = Camera.main.transform.forward * 3.0f + Camera.main.transform.right * delta.x + Camera.main.transform.up * delta.y;
+        
         transform.position = _origin;
-        Debug.Log("Released!");
     }
 
     void Update()
