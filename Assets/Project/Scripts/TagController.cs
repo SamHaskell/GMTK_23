@@ -11,6 +11,7 @@ public class TagController : MonoBehaviour
     public int NumTags;
     public List<Transform> TagTargets;
     public List<TagData> TagData;
+    public CustomerLogic CustomerLogicObject;
     private List<GameObject> _tagsHit;
     private List<GameObject> _tagsLeft;
 
@@ -50,9 +51,13 @@ public class TagController : MonoBehaviour
 
     public void OnTagHit(GameObject tag, Tag guess)
     {
+<<<<<<< Updated upstream
         if (tag.GetComponent<TagPackage>().GetTag() == guess) {
             Debug.Log("Poggers");
         }
+=======
+        CustomerLogicObject.OnTagHit(guess);
+>>>>>>> Stashed changes
         _tagsHit.Add(tag);
         _tagsLeft.Remove(tag);
     }

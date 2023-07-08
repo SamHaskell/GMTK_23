@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f90c851c75e5a49866d6c64176b103, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PackageTagData: {fileID: 0}
+  TagData: {fileID: 0}
 --- !u!114 &3260896362508576255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,7 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4020c5e8bb494b41b308732e2560bad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Controller: {fileID: 0}
+  Controller: {fileID: 140307604087634620, guid: 75c73c42881bcf84b94c6de19f62e082,
+    type: 3}
 --- !u!1 &7578215862888041224
 GameObject:
   m_ObjectHideFlags: 0
