@@ -20,5 +20,8 @@ public class RagdollOnCollide : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         _rb.isKinematic = false;
+        if (collision.gameObject.tag == "Target") {
+            _rb.AddForceAtPosition(collision.relativeVelocity, collision.transform.position, ForceMode.Impulse);
+        }
     }
 }
