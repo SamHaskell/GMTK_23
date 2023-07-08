@@ -12,18 +12,19 @@ public enum Result {
 
 public class Mastermind {
     public List<List<Result>> GuessHistory; // Can change, depending on what UI needs
-    public List<Tag> SolutionTags; // Tag list for the current game solution
-    public List<Tag> KnownTags; // Tag list for tags known to player on current guess
+    public List<ITagble.Tag> SolutionTags; // Tag list for the current game solution
+    public List<ITagble.Tag> KnownTags; // Tag list for tags known to player on current guess
     public int TurnsLeft;
+
     public Mastermind(SolutionData solution, int turns)
     {
         this.SolutionTags = solution.Tags;
-        foreach (Tag tag in SolutionTags) {
-            this.KnownTags.Add(Tag.NONE);
+        foreach (ITagble.Tag tag in SolutionTags) {
+            this.KnownTags.Add(ITagble.Tag.NONE);
         }
         this.TurnsLeft = turns;
     }
-    public void MakeGuess(List<Tag> tags)
+    public void MakeGuess(List<ITagble.Tag> tags)
     {
         List<Result> guess = new List<Result>();
         for (int i = 0; i < SolutionTags.Count(); i++) {
