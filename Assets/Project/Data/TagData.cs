@@ -3,14 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Tag", menuName = "Tag/New Tag Data")]
-public class TagData : ScriptableObject, ITagged
+public class TagData : ScriptableObject
 {
-    public Tag MyTag;
+    public Tag Tag;
     public Sprite TagSprite;
     public Sprite TagBackground;
-
-    public Tag GetTag()
-    {
-        return MyTag;
-    }
 }

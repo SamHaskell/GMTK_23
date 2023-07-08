@@ -27,5 +27,7 @@ public class TagCollision : MonoBehaviour
         if (collision.gameObject.tag == "Target") {
             _rb.AddForceAtPosition(collision.relativeVelocity, collision.transform.position, ForceMode.Impulse);
         }
+
+        Controller.OnTagHit(gameObject, collision.gameObject.GetComponent<TagPackage>().GetTag());
     }
 }

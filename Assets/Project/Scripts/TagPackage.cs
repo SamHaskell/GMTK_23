@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class TagPackage : MonoBehaviour, ITagged
 {
-    public TagData PackageTagData;
+    public TagData TagData;
 
     public Tag GetTag()
     {
-        return PackageTagData.GetTag();
+        return TagData.Tag;
     }
 }

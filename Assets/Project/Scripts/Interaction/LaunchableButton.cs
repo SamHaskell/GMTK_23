@@ -14,6 +14,7 @@ public class LaunchableButton : MonoBehaviour
     private GameObject _clone;
     public GameObject Model;
     public float LaunchSpeed;
+    public 
     void Start()
     {
         _image = GetComponent<Image>();

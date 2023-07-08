@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bcfd1971d0b00445b2f790b0618faa7, type: 3}
-  m_Name: ActionTag
+  m_Script: {fileID: 11500000, guid: 4e892afa00f9547a68c1d4276f584576, type: 3}
+  m_Name: PlatformerTagData
   m_EditorClassIdentifier: 
-  MyTag: 1
+  MyTag: 9
   TagSprite: {fileID: 1415164974, guid: 6acfbb89dbeca8b47ae8197fcbbcae2e, type: 3}
-  TagBackground: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  TagBackground: {fileID: 0}
