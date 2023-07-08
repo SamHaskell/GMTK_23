@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-using System.Diagnostics.Tracing;
-using TMPro.EditorUtilities;
-using System.IO;
 
 public class PickableSprite : MonoBehaviour, IDragHandler, IDropHandler
 {
