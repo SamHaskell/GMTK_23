@@ -6,7 +6,17 @@ public interface ITagble
 {
     public enum Tag
     {
-        NONE, A, B, C, D, E, F
+        NONE,
+        ACTION,
+        ADVENTURE,
+        SHOOTER,
+        MYSTERY,
+        FIGHTING,
+        PUZZLE,
+        RPG,
+        STEALTH,
+        PLATFORMER,
+        STRATEGY
     }
     public Tag GetTag();
 }
