@@ -6,24 +6,29 @@ public class CustomerLogic : MonoBehaviour
 {
     public CustomerData MyCustomerData;
     //public Rigidbody CustomerRigidbody;
-    private Mastermind customerMastermind;
-    private int setSize;
-    private List<ITagble.Tag> tagsForMakeGuess;
+    private Mastermind _customerMastermind;
+    private int _setSize;
+    private List<ITagble.Tag> _tagsForMakeGuess;
 
 
     private void Start()
     {
-        customerMastermind.TurnsLeft = MyCustomerData.CustomerPatience;
-        customerMastermind.SolutionTags = MyCustomerData.CustomerSolutionData.Tags;
-        setSize = MyCustomerData.CustomerSolutionData.Tags.Count;
-        tagsForMakeGuess = new List<ITagble.Tag>(setSize);
+        _customerMastermind = new Mastermind(MyCustomerData.CustomerSolutionData, MyCustomerData.CustomerPatience);
+        _setSize = MyCustomerData.CustomerSolutionData.Tags.Count;
+        _tagsForMakeGuess = new List<ITagble.Tag>(_setSize);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
 
-        ITagble myTagble = collision.collider.GetComponent<ITagble>();
-        Debug.Log(myTagble);
+        ITagble colliderTagble = collision.collider.GetComponent<ITagble>();
+        _tagsForMakeGuess.Add(colliderTagble.GetTag());
+        if(_tagsForMakeGuess.Count >= _setSize)
+        {
+            _customerMastermind.MakeGuess(_tagsForMakeGuess);
+            _customerMastermind.CheckResult();
+            _tagsForMakeGuess.Clear();
+        }
     }
 
     
