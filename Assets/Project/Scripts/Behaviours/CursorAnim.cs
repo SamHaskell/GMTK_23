@@ -5,30 +5,20 @@ using UnityEngine.UI;
 
 public class CursorAnim : MonoBehaviour
 {
-    public Sprite IdleSprite;
-    public Sprite ClickSprite;
+    public Texture2D IdleSprite;
+    public Texture2D ClickSprite;
     private Image _image;
-    void Start()
+    void Awake()
     {
-        _image = GetComponent<Image>();
-        _image.enabled = true;
-        _image.sprite = IdleSprite;
-        Cursor.visible = false;
-    }
-
-    void OnEnable() {
-        Cursor.visible = false;
-    }
-    void OnDisable() {
-        Cursor.visible = true;
+        Cursor.SetCursor(IdleSprite, Vector2.zero, CursorMode.Auto);
     }
 
     void Update()
     {
         if (InputManager.MouseDown) {
-            _image.sprite = ClickSprite;
+            Cursor.SetCursor(ClickSprite, Vector2.zero, CursorMode.Auto);
         } else {
-            _image.sprite = IdleSprite;
+            Cursor.SetCursor(IdleSprite, Vector2.zero, CursorMode.Auto);
         }
     }
 }

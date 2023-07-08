@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Runtime;
+using TMPro;
 
 public class LaunchableTagButton : MonoBehaviour
 {
@@ -13,7 +14,13 @@ public class LaunchableTagButton : MonoBehaviour
     public GameObject Model;
     public float LaunchSpeed;
     public TagData TagData;
-    void Start()
+    
+    void OnValidate()
+    {
+        GetComponentInChildren<TMP_Text>().text = TagData.Name;
+    }
+
+    void Awake()
     {
         _image = GetComponent<Image>();
         _origin = transform.position;
@@ -21,7 +28,7 @@ public class LaunchableTagButton : MonoBehaviour
 
     public void OnPress()
     {
-        _clone = Instantiate(gameObject, transform.position, Quaternion.identity, transform.parent.parent);
+        _clone = Instantiate(gameObject, transform.position, Quaternion.identity, transform.root);
     }
 
     public void OnDrag()
