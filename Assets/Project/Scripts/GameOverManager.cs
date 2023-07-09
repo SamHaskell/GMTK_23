@@ -20,9 +20,9 @@ public class GameOverManager : MonoBehaviour
     void Update()
     {
         _reloadTimer += Time.deltaTime;
-        if (_reloadTimer >= TimerLimit)
+        if (_reloadTimer >= TimerLimit) // do this for ychai
         {
-            SceneManager.LoadScene("Final Scene");
+            SceneManager.LoadScene("InitializationScene");
         }
     }
 }

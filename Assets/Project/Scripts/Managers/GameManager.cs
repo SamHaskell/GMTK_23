@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
         GamesSold = 0;
         OnScoreChange(GamesSold);
         _timeRemaining = InitialTime;
+        PlayerPrefs.SetInt("Score", 0);
     }
 
     private void Update()
@@ -98,6 +99,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void GameLose() {
+        PlayerPrefs.SetInt("Score", GamesSold * 100);
         AudioManager.instance.PlaySound("game over");
         AudioManager.instance.PlayMusicLoop(false);
         SceneManager.LoadScene("GameOver");        
