@@ -349,6 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Icons:
+  - {fileID: 21300000, guid: 610d95877ac5a4d9aa96299feb1a6ac6, type: 3}
   - {fileID: 1415164974, guid: 6acfbb89dbeca8b47ae8197fcbbcae2e, type: 3}
   - {fileID: -1198865972, guid: 6acfbb89dbeca8b47ae8197fcbbcae2e, type: 3}
   - {fileID: 227626962, guid: 6acfbb89dbeca8b47ae8197fcbbcae2e, type: 3}
@@ -783,7 +784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CorrectResult: {fileID: 21300000, guid: 9448be2383965433aab1656b3fa95578, type: 3}
   PartialResult: {fileID: 21300000, guid: 020b2c0f3248a4add88976301a264d8e, type: 3}
-  WrongResult: {fileID: 0}
+  WrongResult: {fileID: 21300000, guid: 610d95877ac5a4d9aa96299feb1a6ac6, type: 3}
 --- !u!1 &8544654364804122595
 GameObject:
   m_ObjectHideFlags: 0

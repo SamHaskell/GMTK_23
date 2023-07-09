@@ -40,10 +40,11 @@ public class TagController : MonoBehaviour
         }
     }
 
-    IEnumerator WaitTest()
+    IEnumerator OnSubmitGuess()
     {
         Debug.Log("Submitted a Guess!");
         yield return new WaitForSeconds(2.0f);
+        DestroyTags();
         SpawnTags();
     }
 
@@ -54,8 +55,8 @@ public class TagController : MonoBehaviour
         if (_tagsHit == CustomerLogicObject.SetSize) {
             _tagsHit = 0;
             CustomerLogicObject.SubmitGuess(_guess);
-            DestroyTags();
-            StartCoroutine(WaitTest());
+            
+            StartCoroutine(OnSubmitGuess());
         }
     }
 }

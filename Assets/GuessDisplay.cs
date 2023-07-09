@@ -16,7 +16,7 @@ public class GuessDisplay : MonoBehaviour
         if (GameManager.Instance.CustomerLogicObject.GuessHistory.Count != 0) {
             Tag[] lastGuess = GameManager.Instance.CustomerLogicObject.GuessHistory[^1];
             for (int i = 0; i < 4; i++) {
-                transform.GetChild(i).GetComponent<Image>().sprite = Icons[(int)lastGuess[i] - 1];
+                transform.GetChild(i).GetComponent<Image>().sprite = Icons[(int)lastGuess[i]];
             }
         }
     }

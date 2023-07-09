@@ -333,6 +333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3745eb0d3dcf45c5ae60816f3f82319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Model: {fileID: 1680181757631035243, guid: 100f5906117df4f8c8d340320d1399c4, type: 3}
+  Model: {fileID: 4879928635299442173, guid: 100f5906117df4f8c8d340320d1399c4, type: 3}
   LaunchSpeed: 60
   TagData: {fileID: 11400000, guid: bd161b7f022314615835ff9f3492603a, type: 2}
