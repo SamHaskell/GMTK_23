@@ -31,6 +31,10 @@ public class CustomerLogic : MonoBehaviour
         
         CheckResult = false;
     }
+    public void ResetCustomerLogic()
+    {
+        Start();
+    }
 
     public void OnTagHit(Tag tag, int idx) {
         _tagsForMakeGuess[idx] = tag;
