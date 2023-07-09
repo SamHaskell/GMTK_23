@@ -9,7 +9,7 @@ public class GuessDisplay : MonoBehaviour
     public Sprite[] Icons;
     void Start()
     {
-        
+
     }
     void Update()
     {
