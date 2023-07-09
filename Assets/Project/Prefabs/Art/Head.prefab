@@ -48,9 +48,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   headIKTarget: {fileID: 73155105868599150}
   bone: {fileID: 3017221893064702794}
-  headMesh: {fileID: 0}
+  headMesh: {fileID: 7996519789697372255}
   driveForce: 50
-  expressions: []
+  expressions:
+  - {fileID: 2800000, guid: 22e02db2d428e9c4e9016cf1f89dfc3d, type: 3}
+  - {fileID: 2800000, guid: a9708995880148c4e9d91b5a05fddde3, type: 3}
+  - {fileID: 2800000, guid: 00b5f07794d233a41a68557997821fdf, type: 3}
+  - {fileID: 2800000, guid: 450684c678fde84439c5727589f20983, type: 3}
   face: 0
   blinkTime: 10
 --- !u!1001 &2865309953080429111
@@ -200,6 +204,12 @@ Transform:
 --- !u!4 &3017221893064702794 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1016955260195254653, guid: ad601ba4a1c2abf47ae96b79f8650c9c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2865309953080429111}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7996519789697372255 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5276802974629960296, guid: ad601ba4a1c2abf47ae96b79f8650c9c,
     type: 3}
   m_PrefabInstance: {fileID: 2865309953080429111}
   m_PrefabAsset: {fileID: 0}
