@@ -288,15 +288,15 @@ MonoBehaviour:
   FloppySpawnTransform: {fileID: 1290685983}
   ButtonSwitcher: {fileID: 1696735264}
   FeedbackDisplay: {fileID: 1145503723}
+  TimerUI: {fileID: 105122776}
   ScoreCounter: {fileID: 934149625}
   TagSetPrefab: {fileID: 1114203900708510817, guid: 75c73c42881bcf84b94c6de19f62e082,
     type: 3}
-  TimerUI: {fileID: 859275034}
   GamesSold: 0
-  InitialTime: 60
+  InitialTime: 240
   BaseTimeAddedPerWin: 60
   TimeAddedPerRemainingGuess: 10
-  TimeMax: 60
+  TimeMax: 240
   head: {fileID: 1501545900}
 --- !u!114 &40852036
 MonoBehaviour:
@@ -408,6 +408,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 42952513}
   m_Mesh: {fileID: 2466991887920886074, guid: 765407d3c0f18ac42a19982db9edccfc, type: 3}
+--- !u!1 &105122776 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3649682552005168696, guid: 891aa6cf87c93c64397e4befc103ac5d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1359780119}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &205553070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1600,12 +1606,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 820835157}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &859275034 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3649682552005168696, guid: 891aa6cf87c93c64397e4befc103ac5d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1359780119}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &934149625 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 561021116061587326, guid: 891aa6cf87c93c64397e4befc103ac5d,
@@ -2488,7 +2488,7 @@ PrefabInstance:
     - target: {fileID: 1789608226106623313, guid: 891aa6cf87c93c64397e4befc103ac5d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 214.65292
+      value: 568.1285
       objectReference: {fileID: 0}
     - target: {fileID: 3100957332007382007, guid: 891aa6cf87c93c64397e4befc103ac5d,
         type: 3}
@@ -2509,11 +2509,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3649682552005168696, guid: 891aa6cf87c93c64397e4befc103ac5d,
-        type: 3}
-      propertyPath: m_Name
-      value: TimerUI
       objectReference: {fileID: 0}
     - target: {fileID: 3943301225823919834, guid: 891aa6cf87c93c64397e4befc103ac5d,
         type: 3}

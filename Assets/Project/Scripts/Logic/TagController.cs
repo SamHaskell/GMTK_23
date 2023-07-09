@@ -46,6 +46,15 @@ public class TagController : MonoBehaviour
         DestroyTags();
         SpawnTags();
     }
+    IEnumerator SelfDestruct()
+    {
+        yield return new WaitForSeconds(5.0f);
+        Destroy(this.gameObject);
+    }
+    public void StartSelfDestruct()
+    {
+        StartCoroutine(SelfDestruct());
+    }
 
 
     public void OnTagHit(GameObject tag, Tag guess, int order)
