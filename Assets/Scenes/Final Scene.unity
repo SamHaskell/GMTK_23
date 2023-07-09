@@ -384,6 +384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CustomerLogicObject: {fileID: 40852036}
   FloppySpawnTransform: {fileID: 1290685983}
+  ButtonSwitcher: {fileID: 0}
   FeedbackDisplay: {fileID: 1145503723}
   TagSetPrefab: {fileID: 1114203900708510817, guid: 75c73c42881bcf84b94c6de19f62e082,
     type: 3}
@@ -4925,7 +4926,7 @@ PrefabInstance:
     - target: {fileID: 1789608226106623313, guid: 891aa6cf87c93c64397e4befc103ac5d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 585.92236
+      value: 355.888
       objectReference: {fileID: 0}
     - target: {fileID: 1789608226106623313, guid: 891aa6cf87c93c64397e4befc103ac5d,
         type: 3}
@@ -5066,22 +5067,27 @@ PrefabInstance:
     - target: {fileID: 5502670645545577655, guid: 891aa6cf87c93c64397e4befc103ac5d,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 80
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5502670645545577655, guid: 891aa6cf87c93c64397e4befc103ac5d,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 80
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 5502670645545577655, guid: 891aa6cf87c93c64397e4befc103ac5d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 91.1
+      value: 68.099976
       objectReference: {fileID: 0}
     - target: {fileID: 5502670645545577655, guid: 891aa6cf87c93c64397e4befc103ac5d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -10
+      value: -18.400024
+      objectReference: {fileID: 0}
+    - target: {fileID: 5502670645545577655, guid: 891aa6cf87c93c64397e4befc103ac5d,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5913494003742283521, guid: 891aa6cf87c93c64397e4befc103ac5d,
         type: 3}
