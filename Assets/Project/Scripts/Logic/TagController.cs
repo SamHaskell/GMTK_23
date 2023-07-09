@@ -47,11 +47,6 @@ public class TagController : MonoBehaviour
         SpawnTags();
     }
 
-    IEnumerator SelfDestruct(float timeDelay)
-    {
-        yield return new WaitForSeconds(timeDelay);
-        Destroy(this.gameObject);
-    }
 
     public void OnTagHit(GameObject tag, Tag guess, int order)
     {

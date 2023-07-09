@@ -73,6 +73,7 @@ public class LaunchableTagButton : MonoBehaviour
                 Random.Range(-15f, 15f)
             );
             Destroy(_clone);
+            newObject.GetComponent<TagCollider>().StartSelfDestruct();
         }
     }
 }

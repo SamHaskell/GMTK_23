@@ -21,6 +21,16 @@ public class TagCollider : MonoBehaviour
         
     }
 
+    public void StartSelfDestruct()
+    {
+        StartCoroutine(SelfDestruct());
+    }
+    IEnumerator SelfDestruct()
+    {
+        yield return new WaitForSeconds(2.0f);
+        Destroy(this.gameObject);
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         if (HasCollided) {
