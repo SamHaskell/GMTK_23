@@ -39,6 +39,8 @@ public class TagCollider : MonoBehaviour
         _rb.AddForceAtPosition(collision.relativeVelocity, collision.transform.position, ForceMode.Impulse);
         collision.gameObject.GetComponent<Collider>().enabled = false;
 
+        AudioManager.instance.PlaySound("explosion");
+
         if (Tag != Tag.NONE) {
             if (Controller != null) {
                 Controller.OnTagHit(gameObject, collision.gameObject.GetComponent<TagCollider>().Tag, this.Order);
