@@ -47,11 +47,17 @@ public class TagController : MonoBehaviour
         SpawnTags();
     }
 
+    IEnumerator SelfDestruct(float timeDelay)
+    {
+        yield return new WaitForSeconds(timeDelay);
+        Destroy(this.gameObject);
+    }
+
     public void OnTagHit(GameObject tag, Tag guess, int order)
     {
         _guess[order] = guess;
         _tagsHit ++;
-        if (_tagsHit == CustomerLogicObject.SetSize) {
+        if (_tagsHit >= CustomerLogicObject.SetSize) {
             _tagsHit = 0;
             CustomerLogicObject.SubmitGuess(_guess);
             StartCoroutine(OnSubmitGuess());
