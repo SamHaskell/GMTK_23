@@ -2,10 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using System.Runtime;
 using TMPro;
-
 public class LaunchableTagButton : MonoBehaviour
 {
     private Image _image;
@@ -18,6 +15,7 @@ public class LaunchableTagButton : MonoBehaviour
     void OnValidate()
     {
         GetComponentInChildren<TMP_Text>().text = TagData.Name;
+        transform.Find("Icon").GetComponent<Image>().sprite = TagData.TagSprite;
     }
 
     void Awake()

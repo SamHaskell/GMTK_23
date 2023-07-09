@@ -244,6 +244,7 @@ MonoBehaviour:
   CustomerLogicObject: {fileID: 40852036}
   TagSetPrefab: {fileID: 1114203900708510817, guid: 75c73c42881bcf84b94c6de19f62e082,
     type: 3}
+  GamesSold: 0
 --- !u!114 &40852036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,9 +258,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CheckResult: 0
+  PossibleSolutions: []
   SolutionData: {fileID: 11400000, guid: 6dd7368dddc3245089c1680387576dd5, type: 2}
   CustomerPatience: 8
   SetSize: 0
+  TurnsLeft: 0
 --- !u!1 &75426394
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,12 +453,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1074330559}
     m_Modifications:
-    - target: {fileID: 4031519363049050660, guid: 03e9f986fa49a470eabbf28ae22f1029,
-        type: 3}
-      propertyPath: TagData
-      value: 
-      objectReference: {fileID: 11400000, guid: bfdbaedc0e9264bdeb7bc321eb679ed4,
-        type: 2}
     - target: {fileID: 5414575360339971578, guid: 03e9f986fa49a470eabbf28ae22f1029,
         type: 3}
       propertyPath: m_Name
@@ -1437,12 +1434,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2010440253}
     m_Modifications:
-    - target: {fileID: 4031519363049050660, guid: 03e9f986fa49a470eabbf28ae22f1029,
-        type: 3}
-      propertyPath: TagData
-      value: 
-      objectReference: {fileID: 11400000, guid: fa01bf25e9bb24a0e99677011c2cd27e,
-        type: 2}
     - target: {fileID: 5414575360339971578, guid: 03e9f986fa49a470eabbf28ae22f1029,
         type: 3}
       propertyPath: m_Name
@@ -2268,12 +2259,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1074330559}
     m_Modifications:
-    - target: {fileID: 4031519363049050660, guid: 03e9f986fa49a470eabbf28ae22f1029,
-        type: 3}
-      propertyPath: TagData
-      value: 
-      objectReference: {fileID: 11400000, guid: 2c3e2aef2c5584024925eaf88dfb24e3,
-        type: 2}
     - target: {fileID: 5414575360339971578, guid: 03e9f986fa49a470eabbf28ae22f1029,
         type: 3}
       propertyPath: m_Name
@@ -2469,12 +2454,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1074330559}
     m_Modifications:
-    - target: {fileID: 4031519363049050660, guid: 03e9f986fa49a470eabbf28ae22f1029,
-        type: 3}
-      propertyPath: TagData
-      value: 
-      objectReference: {fileID: 11400000, guid: 80a0b2acdc24a448dafdd385546a2f75,
-        type: 2}
     - target: {fileID: 5414575360339971578, guid: 03e9f986fa49a470eabbf28ae22f1029,
         type: 3}
       propertyPath: m_Name
@@ -2604,12 +2583,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2010440253}
     m_Modifications:
-    - target: {fileID: 4031519363049050660, guid: 03e9f986fa49a470eabbf28ae22f1029,
-        type: 3}
-      propertyPath: TagData
-      value: 
-      objectReference: {fileID: 11400000, guid: 93b26bf416de94c30aecc8f481ccd79d,
-        type: 2}
     - target: {fileID: 5414575360339971578, guid: 03e9f986fa49a470eabbf28ae22f1029,
         type: 3}
       propertyPath: m_Name
