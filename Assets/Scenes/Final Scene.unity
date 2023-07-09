@@ -264,7 +264,6 @@ MonoBehaviour:
   PossibleSolutions:
   - {fileID: 11400000, guid: 6dd7368dddc3245089c1680387576dd5, type: 2}
   - {fileID: 11400000, guid: 43e0f9b6f0e474bc18687559f23e053d, type: 2}
-  - {fileID: 11400000, guid: 4f66543b81c7a4a03b56f338c271b541, type: 2}
   - {fileID: 11400000, guid: 79fc5c48384d44aebbe74832c1ab4fa0, type: 2}
   - {fileID: 11400000, guid: 79b1ac16dce4e47da8c89aecd4698c4d, type: 2}
   - {fileID: 11400000, guid: 78a762088729b4a45b1209283a64de03, type: 2}
@@ -3153,7 +3152,7 @@ PrefabInstance:
     - target: {fileID: 1789608226106623313, guid: 891aa6cf87c93c64397e4befc103ac5d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 460.3217
+      value: 564.37646
       objectReference: {fileID: 0}
     - target: {fileID: 1789608226106623313, guid: 891aa6cf87c93c64397e4befc103ac5d,
         type: 3}
