@@ -10,7 +10,8 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(2, LoadSceneMode.Single);
         PlayerPrefs.SetInt("Score", 0);
     }
-    public void ToTutorial(){
+    public void ToTutorial()
+    {
         SceneManager.LoadScene(4, LoadSceneMode.Single);
     }
 }
