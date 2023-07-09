@@ -11,10 +11,10 @@ public enum Tag
     MYSTERY,
     FIGHTING,
     PUZZLE,
-    RPG,
-    STEALTH,
-    PLATFORMER,
-    STRATEGY
+    // RPG,
+    // STEALTH,
+    // PLATFORMER,
+    // STRATEGY
 }
 
 public interface ITagged

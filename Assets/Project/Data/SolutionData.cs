@@ -15,5 +15,7 @@ using UnityEngine;
 public class SolutionData : ScriptableObject
 {
     public string Title;
-    public List<Tag> Tags;
+    public Tag[] Tags;
+    public GameObject Model;
+    public Texture2D BoxArt;
 }
