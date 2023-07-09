@@ -322,7 +322,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bb1b2b03d9f0b41458466fe050123039, type: 2}
   - {fileID: 11400000, guid: d6535448e616b417f8a6fcec636abf14, type: 2}
   SolutionData: {fileID: 11400000, guid: 6dd7368dddc3245089c1680387576dd5, type: 2}
-  CustomerPatience: 8
+  CustomerPatience: 2
   SetSize: 3
   TurnsLeft: 0
 --- !u!1 &42952513
@@ -2488,7 +2488,7 @@ PrefabInstance:
     - target: {fileID: 1789608226106623313, guid: 891aa6cf87c93c64397e4befc103ac5d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 568.1285
+      value: 609.0379
       objectReference: {fileID: 0}
     - target: {fileID: 3100957332007382007, guid: 891aa6cf87c93c64397e4befc103ac5d,
         type: 3}

@@ -8,26 +8,16 @@ using TMPro;
 public class GameOverManager : MonoBehaviour
 {
     float _reloadTimer;
-    public TextMeshProUGUI text;
+    public GameObject Text;
     public float TimerLimit;
-    // Start is called before the first frame update
     void Start()
     {
-        // _reloadTimer = 0;
-        text.text = PlayerPrefs.GetInt("Score", 0).ToString();
+        Text.GetComponent<TMP_Text>().text = PlayerPrefs.GetInt("Score", 0).ToString();
     }
-
-    
-    // Update is called once per frame
     void Update()
     {
         if(InputManager.anyKeyDown){
-            SceneManager.LoadScene("InitializationScene");
+            SceneManager.LoadScene(1);
         }
-        // _reloadTimer += Time.deltaTime;
-        // if (_reloadTimer >= TimerLimit) // do this for ychai
-        // {
-            // SceneManager.LoadScene("InitializationScene");
-        // }
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 public class InputManager : MonoBehaviour
 {
@@ -41,7 +42,8 @@ public class InputManager : MonoBehaviour
 
     void Update()
     {
-        anyKeyDown = _playerControls.Player.AnyKey.ReadValue<bool>();
+        var anyKeyAction = _playerControls.Player.AnyKey;
+        anyKeyDown = (anyKeyAction.triggered && anyKeyAction.ReadValue<float>() > 0.0f);
         MousePosition = _playerControls.Player.MousePosition.ReadValue<Vector2>();
         MouseDelta = _playerControls.Player.MouseDelta.ReadValue<Vector2>();
         MouseDown = (_playerControls.Player.LeftClick.ReadValue<float>() > 0.0f);
