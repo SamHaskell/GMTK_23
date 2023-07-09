@@ -142,7 +142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Puzzle
+  m_text: Indie
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9a59515304c024541b6fb8ca27fb8265, type: 2}
   m_sharedMaterial: {fileID: 6863461673923158102, guid: 9a59515304c024541b6fb8ca27fb8265,
@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Model: {fileID: 4879928635299442173, guid: 100f5906117df4f8c8d340320d1399c4, type: 3}
-  LaunchSpeed: 60
+  LaunchSpeed: 20
   TagData: {fileID: 11400000, guid: 2c3e2aef2c5584024925eaf88dfb24e3, type: 2}
 --- !u!114 &6332432957334701311
 MonoBehaviour:

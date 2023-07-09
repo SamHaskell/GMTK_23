@@ -11,12 +11,13 @@ public class LaunchableTagButton : MonoBehaviour
     public GameObject Model;
     public float LaunchSpeed;
     public TagData TagData;
-    
-    void OnValidate()
-    {
-        GetComponentInChildren<TMP_Text>().text = TagData.Name;
-        transform.Find("Icon").GetComponent<Image>().sprite = TagData.TagSprite;
-    }
+    #if UNITY_EDITOR
+        void OnValidate()
+        {
+            // GetComponentInChildren<TMP_Text>().text = TagData.Name;
+            // transform.Find("Icon").GetComponentInChildren<Image>().sprite = TagData.TagSprite;
+        }
+    #endif
 
     void Awake()
     {
