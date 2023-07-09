@@ -313,6 +313,10 @@ MonoBehaviour:
   TagSetPrefab: {fileID: 1114203900708510817, guid: 75c73c42881bcf84b94c6de19f62e082,
     type: 3}
   GamesSold: 0
+  InitialTime: 0
+  BaseTimeAddedPerWin: 0
+  TimeAddedPerRemainingGuess: 0
+  TimeMax: 0
   head: {fileID: 1501545900}
 --- !u!114 &40852036
 MonoBehaviour:
@@ -3566,7 +3570,7 @@ PrefabInstance:
     - target: {fileID: 1789608226106623313, guid: 891aa6cf87c93c64397e4befc103ac5d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 200.95526
+      value: 332.7247
       objectReference: {fileID: 0}
     - target: {fileID: 1789608226106623313, guid: 891aa6cf87c93c64397e4befc103ac5d,
         type: 3}
@@ -4054,10 +4058,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 64187641}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4825110976079907389, guid: 891aa6cf87c93c64397e4befc103ac5d, type: 3}
