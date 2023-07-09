@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public int GamesSold;
     public static GameManager Instance { get; private set; }
 
+    public HeadDriver head;
     private void Awake() {
         if (Instance == null) {
             Instance = this;
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
                 FeedbackDisplay.AddResult(CustomerLogicObject.GuessHistory[^1], CustomerLogicObject.GuessResult[^1]);
                 Debug.Log(CustomerLogicObject.TurnsLeft);
                 AudioManager.instance.PlaySound("incorrect");
+                head.SetFace(Faces.Angry, 4f);
             }
         }
     }
@@ -62,6 +64,8 @@ public class GameManager : MonoBehaviour
         StartCoroutine(FloppyTime(solution));
         GamesSold ++;
         AudioManager.instance.PlaySound("success");
+        head.SetFace(Faces.Happy, 8f);
+        //EmitParticles(Feedback.Success);
     }
 
     private void GameLose() {

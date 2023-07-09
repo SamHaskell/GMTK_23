@@ -7,6 +7,7 @@ public class HeadDriver : MonoBehaviour
 
     public Transform headIKTarget;
     public Transform bone;
+    public Transform headMesh;
     public float driveForce;
     public Texture2D[] expressions;
     public Faces face;
@@ -16,8 +17,8 @@ public class HeadDriver : MonoBehaviour
 
     // Start is called before the first frame update
     void Start(){
-        mat = GetComponent<Material>();
-        StartCoroutine(Blink());
+        mat = headMesh.GetComponent<Renderer>().material;
+        StartCoroutine(Blink());       
     }
     // Update is called once per frame
     void Update()
@@ -30,16 +31,16 @@ public class HeadDriver : MonoBehaviour
         }
         switch (face){
             case Faces.Relaxed:
-                mat.mainTexture = expressions[(int)face];
+                mat.SetTexture("_Texture2D",expressions[(int)face]);
                 break;
             case Faces.Blink:
-                mat.mainTexture = expressions[(int)face];
+                mat.SetTexture("_Texture2D",expressions[(int)face]);
                 break;
             case Faces.Happy:
-                mat.mainTexture = expressions[(int)face];
+                mat.SetTexture("_Texture2D",expressions[(int)face]);
                 break;
             case Faces.Angry:
-                mat.mainTexture = expressions[(int)face];
+                mat.SetTexture("_Texture2D",expressions[(int)face]);
                 break;
         }
     }
@@ -48,14 +49,19 @@ public class HeadDriver : MonoBehaviour
         yield return new WaitForSeconds(Random.Range(blinkTime-2f, blinkTime+2f));
         if(face == Faces.Relaxed){
             face = Faces.Blink;
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(0.2f);
             face = Faces.Relaxed;
             }
         }
     }
-    IEnumerator SetExpression(Faces face, float time){
-        var oldFace = face;
-        face = Faces.Blink;
+    public void SetFace(Faces newFace, float time){
+        StartCoroutine(SetExpression(newFace, time));
+        // Debug.Log("Setting face.");
+    }
+    IEnumerator SetExpression(Faces newFace, float time){
+        var oldFace = Faces.Relaxed; //lol
+        face = newFace;
+        // Debug.Log(face);
         yield return new WaitForSeconds(time);
         face = oldFace;
     }
