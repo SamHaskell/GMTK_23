@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/InitializationScene.unity
     guid: 31d8406e8def0aa4e8048cf2ffac230e
   - enabled: 1
+    path: Assets/Scenes/Gameplay.unity
+    guid: b083f5b19496348fbafacec3c5886711
+  - enabled: 0
     path: Assets/Scenes/OLD/Final Scene.unity
     guid: 8f78cdc4e7f703b4fb3cc29f4982fcdc
   - enabled: 0
@@ -23,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 6aa85bea8a7f9534ca5be0f324e4215f
+  - enabled: 1
+    path: Assets/Scenes/Tutorial Scene.unity
+    guid: 8b681965b32a31a4baee6affbdaf3098
   m_configObjects: {}

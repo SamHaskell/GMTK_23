@@ -1,23 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class FloppyLogic : MonoBehaviour
 {
-
-    public List<GameObject> FloppyTutorialText;
-    // Start is called before the first frame update
-    void Start()
+    public void GameLose()
     {
-        
-    }
-
-    
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        AudioManager.instance.PlaySound("game over");
+        AudioManager.instance.PlayMusicLoop(false);
+        SceneManager.LoadScene("GameOver");
     }
 }
