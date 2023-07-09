@@ -15,4 +15,6 @@ MonoBehaviour:
   Name: Action
   Tag: 1
   TagSprite: {fileID: 1415164974, guid: 6acfbb89dbeca8b47ae8197fcbbcae2e, type: 3}
+  TagSpriteInverted: {fileID: -994773994, guid: 8b9d69012a61f4547bdeced828801539,
+    type: 3}
   TagBackground: {fileID: 0}

@@ -15,4 +15,6 @@ MonoBehaviour:
   Name: Strategy
   Tag: 7
   TagSprite: {fileID: 1563851566, guid: 6acfbb89dbeca8b47ae8197fcbbcae2e, type: 3}
+  TagSpriteInverted: {fileID: 1406350322, guid: 8b9d69012a61f4547bdeced828801539,
+    type: 3}
   TagBackground: {fileID: 0}

@@ -15,4 +15,5 @@ MonoBehaviour:
   Name: Mystery
   Tag: 4
   TagSprite: {fileID: -536689308, guid: 6acfbb89dbeca8b47ae8197fcbbcae2e, type: 3}
+  TagSpriteInverted: {fileID: 108850957, guid: 8b9d69012a61f4547bdeced828801539, type: 3}
   TagBackground: {fileID: 0}

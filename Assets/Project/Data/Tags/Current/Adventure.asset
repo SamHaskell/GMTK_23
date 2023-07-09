@@ -15,4 +15,6 @@ MonoBehaviour:
   Name: Adventure
   Tag: 2
   TagSprite: {fileID: -1198865972, guid: 6acfbb89dbeca8b47ae8197fcbbcae2e, type: 3}
+  TagSpriteInverted: {fileID: 2030711586, guid: 8b9d69012a61f4547bdeced828801539,
+    type: 3}
   TagBackground: {fileID: 0}
