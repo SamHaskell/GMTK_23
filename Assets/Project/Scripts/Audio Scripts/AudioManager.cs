@@ -58,6 +58,9 @@ public class AudioManager : MonoBehaviour
             case "game over":
                 FMODUnity.RuntimeManager.PlayOneShot("event:/Major Failure");
                 break;
+            case "start":
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Major Failure");
+                break;
         }
     }
 
