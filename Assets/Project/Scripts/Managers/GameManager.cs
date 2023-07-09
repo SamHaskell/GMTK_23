@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public CustomerLogic CustomerLogicObject; // Set manually
     public Transform FloppySpawnTransform;
+    public ButtonSwitcher ButtonSwitcher;
     public FeedbackDisplay FeedbackDisplay; // Set manually
     public GameObject TagSetPrefab;
     private Time _timePlayed;
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
                 AudioManager.instance.PlaySound("incorrect");
                 head.SetFace(Faces.Angry, 4f);
             }
+            ButtonSwitcher.EnableButtons();
         }
     }
 

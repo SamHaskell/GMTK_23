@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8308653222498898910}
   - component: {fileID: 4599437442791515648}
   - component: {fileID: 8016029660512697786}
+  - component: {fileID: -6329714815666834515}
   m_Layer: 0
   m_Name: MysteryTargetTag
   m_TagString: Target
@@ -151,6 +152,20 @@ MonoBehaviour:
   Controller: {fileID: 0}
   Order: 0
   HasCollided: 0
+--- !u!114 &-6329714815666834515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2402476843869277253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ae2c6dfe02244fbae8bb07fdd70583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplacementAmplitudes: {x: 0.2, y: 0.2, z: 0.2}
+  DisplacementFrequencies: {x: 1, y: 1, z: 1}
 --- !u!1 &7043238037924593026
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,7 +227,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d7cd4bae40b3940d697961ce90009892, type: 2}
+  - {fileID: 2100000, guid: dd64d179e8b4b4c48866a034f10b4ab6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -11,6 +11,7 @@ public class LaunchableTagButton : MonoBehaviour
     public GameObject Model;
     public float LaunchSpeed;
     public TagData TagData;
+    public bool _available;
     #if UNITY_EDITOR
         void OnValidate()
         {
@@ -19,38 +20,57 @@ public class LaunchableTagButton : MonoBehaviour
         }
     #endif
 
+    public void MarkAsUsed()
+    {
+        _available = false;
+        // transform.Find("Icon").GetComponentInChildren<Image>().color = Color.black;
+    }
+
+    public void MarkAsFree()
+    {
+        _available = true;
+        // transform.Find("Icon").GetComponentInChildren<Image>().color = Color.white;
+    }
+
     void Awake()
     {
+        _available = true;
         _image = GetComponent<Image>();
         _origin = transform.position;
     }
 
     public void OnPress()
     {
-        _clone = Instantiate(gameObject, transform.position, Quaternion.identity, transform.root);
+        if (_available) {
+            _clone = Instantiate(gameObject, transform.position, Quaternion.identity, transform.root);
+        }
     }
 
     public void OnDrag()
     {
-        Vector2 pos = InputManager.MousePosition;
-        _clone.transform.position = pos;
+        if (_available) {
+            Vector2 pos = InputManager.MousePosition;
+            _clone.transform.position = pos;
+        }
     }
 
     public void OnRelease()
     {
-        AudioManager.instance.PlaySound("throw");
-        Vector2 pos = InputManager.MousePosition;
-        Ray ray = Camera.main.ScreenPointToRay(pos);
-        GameObject newObject = Instantiate(Model, ray.origin + ray.direction * 0.5f, Quaternion.identity);
-        newObject.GetComponent<TagCollider>().Tag = TagData.Tag;
-        Rigidbody rb = newObject.GetComponent<Rigidbody>();
-        rb.isKinematic = false;
-        rb.velocity = ray.direction * LaunchSpeed;
-        rb.angularVelocity = new Vector3(
-            Random.Range(-15f, 15f),
-            Random.Range(-15f, 15f),
-            Random.Range(-15f, 15f)
-        );
-        Destroy(_clone);
+        if (_available) {
+            AudioManager.instance.PlaySound("throw");
+            Vector2 pos = InputManager.MousePosition;
+            Ray ray = Camera.main.ScreenPointToRay(pos);
+            GameObject newObject = Instantiate(Model, ray.origin + ray.direction * 0.5f, Quaternion.identity);
+            newObject.GetComponent<TagCollider>().Tag = TagData.Tag;
+            Rigidbody rb = newObject.GetComponent<Rigidbody>();
+            rb.isKinematic = false;
+            rb.velocity = ray.direction * LaunchSpeed;
+            rb.angularVelocity = new Vector3(
+                Random.Range(-15f, 15f),
+                Random.Range(-15f, 15f),
+                Random.Range(-15f, 15f)
+            );
+            Destroy(_clone);
+        }
     }
 }
