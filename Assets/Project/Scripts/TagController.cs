@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -8,56 +9,53 @@ using UnityEngine.Pool;
 public class TagController : MonoBehaviour
 {
     public GameObject TagPrefab;
-    public int NumTags;
     public List<Transform> TagTargets;
-    public List<TagData> TagData;
     public CustomerLogic CustomerLogicObject;
-    private List<GameObject> _tagsHit;
-    private List<GameObject> _tagsLeft;
+    private GameObject[] _tags;
+    private Tag[] _guess;
+    private int _tagsHit;
 
     void Start()
     {
-        _tagsLeft = new List<GameObject>();
-        _tagsHit = new List<GameObject>();
+        _tags = new GameObject[CustomerLogicObject.SetSize];
+        _guess = new Tag[CustomerLogicObject.SetSize];
         SpawnTags();
     }
     void DestroyTags()
     {
-        foreach (GameObject tag in _tagsLeft) {
+        foreach (GameObject tag in _tags) {
             Destroy(tag);
         }
-        _tagsLeft.Clear();
-        foreach (GameObject tag in _tagsHit) {
-            Destroy(tag);
-        }
-        _tagsHit.Clear();
+        _tags = new GameObject[CustomerLogicObject.SetSize];
+        _guess = new Tag[CustomerLogicObject.SetSize];
     }
     void SpawnTags()
     {
-        for (int i = 0; i < NumTags; i++) {
-            GameObject tag = Instantiate(TagPrefab, TagTargets[i].position, TagTargets[i].rotation);
-            tag.GetComponent<TagCollider>().Controller = this;
-            tag.GetComponent<TagPackage>().TagData = TagData[0];
-            _tagsLeft.Add(tag);
+        _tagsHit = 0;
+        for (int i = 0; i < CustomerLogicObject.SetSize; i++) {
+            _tags[i] = Instantiate(TagPrefab, TagTargets[i].position, TagTargets[i].rotation);
+            _tags[i].GetComponent<TagCollider>().Controller = this;
+            _tags[i].GetComponent<TagCollider>().Tag = CustomerLogicObject.SolutionData.Tags[i];
+            _tags[i].GetComponent<TagCollider>().Order = i;
         }
     }
-    void Update()
+
+    IEnumerator WaitTest()
     {
-        if (_tagsLeft.Count == 0) {
+        Debug.Log("Submitted a Guess!");
+        yield return new WaitForSeconds(2.0f);
+        SpawnTags();
+    }
+
+    public void OnTagHit(GameObject tag, Tag guess, int order)
+    {
+        _guess[order] = guess;
+        _tagsHit ++;
+        if (_tagsHit == CustomerLogicObject.SetSize) {
+            _tagsHit = 0;
+            CustomerLogicObject.SubmitGuess(_guess);
             DestroyTags();
-            SpawnTags();
-        }  
-    }
-
-    public void OnTagHit(GameObject tag, Tag guess)
-    {
-
-        if (tag.GetComponent<TagPackage>().GetTag() == guess) {
-            Debug.Log("Poggers");
+            StartCoroutine(WaitTest());
         }
-
-        CustomerLogicObject.OnTagHit(guess);
-        _tagsHit.Add(tag);
-        _tagsLeft.Remove(tag);
     }
 }

@@ -5,48 +5,51 @@ using UnityEngine;
 public class CustomerLogic : MonoBehaviour
 {
     public bool CheckResult;
-    public CustomerData MyCustomerData;
-    public List<List<Tag>> GuessHistory;
+    public SolutionData SolutionData;
+    public int CustomerPatience;
+    public List<Tag[]> GuessHistory;
     public List<Dictionary<Result, int>> GuessResult;
-    //public Rigidbody CustomerRigidbody;
     private Mastermind _customerMastermind;
-    private int _setSize;
-    private List<Tag> _tagsForMakeGuess;
+    public int SetSize;
+    private Tag[] _tagsForMakeGuess;
 
 
-    private void Start()
-    {
+    private void Start() {
         GuessHistory = new();
-        GuessHistory = new();
-        _customerMastermind = new Mastermind(MyCustomerData.CustomerSolutionData, MyCustomerData.CustomerPatience);
-        _setSize = MyCustomerData.CustomerSolutionData.Tags.Count;
-        _tagsForMakeGuess = new List<Tag>(_setSize);
+        GuessResult = new();
+        _customerMastermind = new Mastermind(SolutionData, CustomerPatience);
+        SetSize = SolutionData.Tags.Length;
+        _tagsForMakeGuess = new Tag[SetSize];
         CheckResult = false;
     }
 
-    public void OnTagHit(Tag colliderTag)
-    {
-        _tagsForMakeGuess.Add(colliderTag);
-        if(_tagsForMakeGuess.Count >= _setSize)
-        {
-            _customerMastermind.MakeGuess(_tagsForMakeGuess);
-            CheckResultFlag();
-            GuessHistory.Add(_tagsForMakeGuess);
-            _tagsForMakeGuess.Clear();
-        }
+    public void OnTagHit(Tag tag, int idx) {
+        _tagsForMakeGuess[idx] = tag;
     }
 
-    public void CheckResultFlag()
+    public void SubmitGuess(Tag[] guess)
     {
-        if (!CheckResult)
-        {
+        _customerMastermind.MakeGuess(guess);
+        CheckResultFlag();
+        GuessHistory.Add(guess);
+        // Debug.Log((int)guess[0]);
+        // Debug.Log((int)guess[1]);
+        // Debug.Log((int)guess[2]);
+        // Debug.Log((int)guess[3]);
+    }
+    public void CheckResultFlag() {
+        if (!CheckResult) {
             CheckResult = true;
         }
     }
 
     public void CheckMastermindResult()
     {
-        GuessResult.Add(_customerMastermind.CheckResult());
+        Dictionary<Result, int> result = _customerMastermind.CheckResult();
+        GuessResult.Add(result);
+        Debug.Log(result[Result.CORRECT]);
+        Debug.Log(result[Result.PARTIAL]);
+        Debug.Log(result[Result.INCORRECT]);
         CheckResult = false;
     }
 

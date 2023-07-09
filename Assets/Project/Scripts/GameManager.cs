@@ -13,13 +13,16 @@ public class GameManager : MonoBehaviour
     Change scenes ()
      */
 
-    
     public CustomerLogic CustomerLogicObject;
-
+    public GameObject TagSetPrefab;
     private Time _timePlayed;
     private Time _startTimePlayed;
     private double _moneyMade;
 
+    private void Start() {
+        GameObject tagSet = Instantiate(TagSetPrefab);
+        tagSet.GetComponent<TagController>().CustomerLogicObject = CustomerLogicObject;
+    }
 
     private void Update()
     {

@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class TagCollider : MonoBehaviour
 {
+    public Tag Tag;
     public TagController Controller;
+    public int Order;
     private Rigidbody _rb;
-    private bool _hasCollided;
+    public bool HasCollided;
 
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        HasCollided = false;
     }
     
     void Update()
@@ -20,14 +23,19 @@ public class TagCollider : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (HasCollided) {
+            return;
+        }
+        HasCollided = true;
+
         _rb.isKinematic = false;
         if (collision.gameObject.tag == "Target") {
             _rb.AddForceAtPosition(collision.relativeVelocity, collision.transform.position, ForceMode.Impulse);
         }
-        TagPackage tagPackage = collision.gameObject.GetComponent<TagPackage>();
-        if (tagPackage != null) {
+        gameObject.GetComponent<Collider>().enabled = false;
+        if (Tag != Tag.NONE) {
             if (Controller != null) {
-                Controller.OnTagHit(gameObject, tagPackage.GetTag());
+                Controller.OnTagHit(gameObject, collision.gameObject.GetComponent<TagCollider>().Tag, this.Order);
             }
         }
     }

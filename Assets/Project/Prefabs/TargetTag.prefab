@@ -13,8 +13,7 @@ GameObject:
   - component: {fileID: 243394320990411909}
   - component: {fileID: 2727850002776094267}
   - component: {fileID: 7986659852665787277}
-  - component: {fileID: 246739011862743300}
-  - component: {fileID: 3260896362508576255}
+  - component: {fileID: 2179576973870825855}
   m_Layer: 0
   m_Name: TargetTag
   m_TagString: Target
@@ -134,9 +133,9 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 1.2, z: 1.1}
+  m_Size: {x: 10, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &246739011862743300
+--- !u!114 &2179576973870825855
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,24 +144,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1680181757631035243}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8f90c851c75e5a49866d6c64176b103, type: 3}
+  m_Script: {fileID: 11500000, guid: f08173e6b1b544c919ccb2a5abef9919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TagData: {fileID: 0}
---- !u!114 &3260896362508576255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1680181757631035243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4020c5e8bb494b41b308732e2560bad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Controller: {fileID: 140307604087634620, guid: 75c73c42881bcf84b94c6de19f62e082,
-    type: 3}
+  Tag: 1
+  Controller: {fileID: 0}
+  Order: 0
+  HasCollided: 0
 --- !u!1 &7578215862888041224
 GameObject:
   m_ObjectHideFlags: 0
