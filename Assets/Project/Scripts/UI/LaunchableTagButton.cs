@@ -64,6 +64,7 @@ public class LaunchableTagButton : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(pos);
             GameObject newObject = Instantiate(Model, ray.origin + ray.direction * 0.5f, Quaternion.identity);
             newObject.GetComponent<TagCollider>().Tag = TagData.Tag;
+            newObject.GetComponent<TagController>().StartSelfDestruct();
             Rigidbody rb = newObject.GetComponent<Rigidbody>();
             rb.isKinematic = false;
             rb.velocity = ray.direction * LaunchSpeed;
