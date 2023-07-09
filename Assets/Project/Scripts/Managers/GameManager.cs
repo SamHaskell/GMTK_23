@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR;
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     public Transform FloppySpawnTransform;
     public ButtonSwitcher ButtonSwitcher;
     public FeedbackDisplay FeedbackDisplay; // Set manually
+    public GameObject ScoreCounter;
     public GameObject TagSetPrefab;
     private Time _timePlayed;
     private Time _startTimePlayed;
@@ -37,6 +39,7 @@ public class GameManager : MonoBehaviour
         GameObject tagSet = Instantiate(TagSetPrefab);
         tagSet.GetComponent<TagController>().CustomerLogicObject = CustomerLogicObject;
         GamesSold = 0;
+        OnScoreChange(GamesSold);
         _timeRemaining = InitialTime;
     }
 
@@ -64,6 +67,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnScoreChange(int score)
+    {
+        ScoreCounter.GetComponent<TMP_Text>().text = (GamesSold*100).ToString();
+    }
+
     private IEnumerator FloppyTime(SolutionData solution)
     {
         // TEMPORARY UNTIL WE ADD SOME PAZZAZZ
@@ -76,6 +84,7 @@ public class GameManager : MonoBehaviour
     private void GameWin(SolutionData solution) {
         StartCoroutine(FloppyTime(solution));
         GamesSold ++;
+        OnScoreChange(GamesSold);
         AudioManager.instance.PlaySound("success");
         head.SetFace(Faces.Happy, 8f);
         // TIME ADDITION
