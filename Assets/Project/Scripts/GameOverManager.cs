@@ -8,11 +8,9 @@ using TMPro;
 public class GameOverManager : MonoBehaviour
 {
     float _reloadTimer;
-    public GameObject Text;
     public float TimerLimit;
     void Start()
     {
-        Text.GetComponent<TMP_Text>().text = PlayerPrefs.GetInt("Score", 0).ToString();
     }
     void Update()
     {
