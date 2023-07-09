@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         }
         if (CustomerLogicObject.CheckResult) {
             if (CustomerLogicObject.CheckMastermindResult()) {
-                GameWin();
+                GameWin(CustomerLogicObject.SolutionData);
                 FeedbackDisplay.ClearResults();
                 Debug.Log("You Win!");
             } else {
@@ -47,7 +47,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void GameWin() {
+    private void GameWin(SolutionData solution) {
+        GameObject floppy = Instantiate(solution.Model);
+        // floppy.GetComponentInChildren<>
         GamesSold ++;
     }
 
