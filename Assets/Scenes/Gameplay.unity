@@ -291,11 +291,12 @@ MonoBehaviour:
   ScoreCounter: {fileID: 934149625}
   TagSetPrefab: {fileID: 1114203900708510817, guid: 75c73c42881bcf84b94c6de19f62e082,
     type: 3}
+  TimerUI: {fileID: 859275034}
   GamesSold: 0
-  InitialTime: 240
+  InitialTime: 60
   BaseTimeAddedPerWin: 60
   TimeAddedPerRemainingGuess: 10
-  TimeMax: 240
+  TimeMax: 60
   head: {fileID: 1501545900}
 --- !u!114 &40852036
 MonoBehaviour:
@@ -1599,6 +1600,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 820835157}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &859275034 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3649682552005168696, guid: 891aa6cf87c93c64397e4befc103ac5d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1359780119}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &934149625 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 561021116061587326, guid: 891aa6cf87c93c64397e4befc103ac5d,
@@ -2481,7 +2488,7 @@ PrefabInstance:
     - target: {fileID: 1789608226106623313, guid: 891aa6cf87c93c64397e4befc103ac5d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -53.16893
+      value: 332.904
       objectReference: {fileID: 0}
     - target: {fileID: 3100957332007382007, guid: 891aa6cf87c93c64397e4befc103ac5d,
         type: 3}
@@ -2503,6 +2510,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3649682552005168696, guid: 891aa6cf87c93c64397e4befc103ac5d,
+        type: 3}
+      propertyPath: m_Name
+      value: TimerUI
+      objectReference: {fileID: 0}
     - target: {fileID: 3943301225823919834, guid: 891aa6cf87c93c64397e4befc103ac5d,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2512,11 +2524,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4871093449304913563, guid: 891aa6cf87c93c64397e4befc103ac5d,
-        type: 3}
-      propertyPath: m_Name
-      value: ScoreCounter
       objectReference: {fileID: 0}
     - target: {fileID: 4695572656925280241, guid: 891aa6cf87c93c64397e4befc103ac5d,
         type: 3}
@@ -2533,6 +2540,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4871093449304913563, guid: 891aa6cf87c93c64397e4befc103ac5d,
+        type: 3}
+      propertyPath: m_Name
+      value: ScoreCounter
       objectReference: {fileID: 0}
     - target: {fileID: 5913494003742283521, guid: 891aa6cf87c93c64397e4befc103ac5d,
         type: 3}
