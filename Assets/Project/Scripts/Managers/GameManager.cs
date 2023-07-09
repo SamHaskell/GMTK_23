@@ -48,10 +48,6 @@ public class GameManager : MonoBehaviour
     {
         _timeRemaining -= Time.deltaTime;
         Debug.Log(_timeRemaining);
-        if (CustomerLogicObject.TurnsLeft == 0) {
-            GameLose();
-            FeedbackDisplay.ClearResults();
-        }
         if (CustomerLogicObject.CheckResult) {
             if (CustomerLogicObject.CheckMastermindResult()) {
                 GameWin(CustomerLogicObject.SolutionData);
@@ -65,6 +61,11 @@ public class GameManager : MonoBehaviour
             }
             ButtonSwitcher.EnableButtons();
             _timeRemaining = Mathf.Clamp(_timeRemaining, _timeRemaining, TimeMax);
+        }
+        if (CustomerLogicObject.TurnsLeft == 0)
+        {
+            GameLose();
+            FeedbackDisplay.ClearResults();
         }
     }
 
