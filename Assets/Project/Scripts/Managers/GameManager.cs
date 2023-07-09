@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public float InitialTime;
     public float BaseTimeAddedPerWin;
     public float TimeAddedPerRemainingGuess;
+    public float TimeMax;
 
     public HeadDriver head;
     private void Awake() {
@@ -59,6 +60,7 @@ public class GameManager : MonoBehaviour
                 head.SetFace(Faces.Angry, 4f);
             }
             ButtonSwitcher.EnableButtons();
+            _timeRemaining = Mathf.Clamp(_timeRemaining, _timeRemaining, TimeMax);
         }
     }
 
