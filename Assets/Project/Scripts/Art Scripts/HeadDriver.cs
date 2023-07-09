@@ -49,17 +49,19 @@ public class HeadDriver : MonoBehaviour
         yield return new WaitForSeconds(Random.Range(blinkTime-2f, blinkTime+2f));
         if(face == Faces.Relaxed){
             face = Faces.Blink;
-            yield return new WaitForSeconds(0.4f);
+            yield return new WaitForSeconds(0.2f);
             face = Faces.Relaxed;
             }
         }
     }
-    public void SetFace(Faces face, float time){
-        StartCoroutine(SetExpression(face, time));
+    public void SetFace(Faces newFace, float time){
+        StartCoroutine(SetExpression(newFace, time));
+        // Debug.Log("Setting face.");
     }
-    IEnumerator SetExpression(Faces face, float time){
-        var oldFace = face;
-        face = Faces.Blink;
+    IEnumerator SetExpression(Faces newFace, float time){
+        var oldFace = Faces.Relaxed; //lol
+        face = newFace;
+        // Debug.Log(face);
         yield return new WaitForSeconds(time);
         face = oldFace;
     }
