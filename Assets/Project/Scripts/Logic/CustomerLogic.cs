@@ -21,10 +21,11 @@ public class CustomerLogic : MonoBehaviour
     private void Start() {
         GuessHistory = new List<Tag[]>();
         GuessResult = new List<Dictionary<Result, int>>();
-        
+
+        int sol = Random.Range(0, PossibleSolutions.Count);
+        SolutionData = PossibleSolutions[sol];
         SetSize = SolutionData.Tags.Length;
         TurnsLeft = CustomerPatience;
-
         _customerMastermind = new Mastermind(SolutionData, CustomerPatience);
         _tagsForMakeGuess = new Tag[SetSize];
         
