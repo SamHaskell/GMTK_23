@@ -40,6 +40,19 @@ public class AudioManager : MonoBehaviour
                 break;
         }
     }
+    public void PlayMusicLoop(bool st){
+        switch (st) {
+            case true:
+                iMusic = RuntimeManager.CreateInstance("event:/Music");
+                iMusic.start();
+                break;
+            case false:
+                iMusic.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                // iMusic.setVolume(Mathf.Lerp(iMusic.getVolume(), 0.0f, Time.del))
+                break;
+        }
+
+    }
     public void PlaySound(string s) {
         // if a sound overlaps itself too much, tell andrew ok i will
         switch (s) {
