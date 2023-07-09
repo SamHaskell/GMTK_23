@@ -383,6 +383,7 @@ MonoBehaviour:
   Model: {fileID: 4879928635299442173, guid: 100f5906117df4f8c8d340320d1399c4, type: 3}
   LaunchSpeed: 20
   TagData: {fileID: 11400000, guid: 2c3e2aef2c5584024925eaf88dfb24e3, type: 2}
+  _available: 0
 --- !u!114 &6332432957334701311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,7 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5235849, g: 1, b: 0.968239, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
