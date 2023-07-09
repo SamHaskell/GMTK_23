@@ -22,7 +22,7 @@ public class GameOverManager : MonoBehaviour
         _reloadTimer += Time.deltaTime;
         if (_reloadTimer >= TimerLimit)
         {
-            SceneManager.LoadScene("InitializationScene");
+            SceneManager.LoadScene("Final Scene");
         }
     }
 }
