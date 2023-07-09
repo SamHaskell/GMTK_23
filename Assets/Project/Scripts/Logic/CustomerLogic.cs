@@ -51,6 +51,9 @@ public class CustomerLogic : MonoBehaviour
         GuessResult.Add(result);
         CheckResult = false;
         // need to check isSuccess and change it so that GameManager can detect a win.
+        if (result[Result.CORRECT] == SetSize) {
+            isSuccess = true;
+        }
         return isSuccess;
     }
 
