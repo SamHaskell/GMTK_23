@@ -5,12 +5,14 @@ using UnityEngine;
 public class CustomerLogic : MonoBehaviour
 {
     public bool CheckResult;
+    public List<SolutionData> PossibleSolutions;
     public SolutionData SolutionData;
     public int CustomerPatience;
     public List<Tag[]> GuessHistory;
     public List<Dictionary<Result, int>> GuessResult;
     private Mastermind _customerMastermind;
     public int SetSize;
+    public int TurnsLeft;
     private Tag[] _tagsForMakeGuess;
 
 
@@ -19,6 +21,7 @@ public class CustomerLogic : MonoBehaviour
         GuessResult = new();
         _customerMastermind = new Mastermind(SolutionData, CustomerPatience);
         SetSize = SolutionData.Tags.Length;
+        TurnsLeft = CustomerPatience;
         _tagsForMakeGuess = new Tag[SetSize];
         CheckResult = false;
     }
@@ -32,10 +35,7 @@ public class CustomerLogic : MonoBehaviour
         _customerMastermind.MakeGuess(guess);
         CheckResultFlag();
         GuessHistory.Add(guess);
-        // Debug.Log((int)guess[0]);
-        // Debug.Log((int)guess[1]);
-        // Debug.Log((int)guess[2]);
-        // Debug.Log((int)guess[3]);
+        TurnsLeft --;
     }
     
     public void CheckResultFlag() {
@@ -44,14 +44,13 @@ public class CustomerLogic : MonoBehaviour
         }
     }
 
-    public void CheckMastermindResult()
+    public bool CheckMastermindResult()
     {
+        bool isSuccess = false;
         Dictionary<Result, int> result = _customerMastermind.CheckResult();
         GuessResult.Add(result);
-        Debug.Log(result[Result.CORRECT]);
-        Debug.Log(result[Result.PARTIAL]);
-        Debug.Log(result[Result.INCORRECT]);
         CheckResult = false;
+        return isSuccess;
     }
 
 }

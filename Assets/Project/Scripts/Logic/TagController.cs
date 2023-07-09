@@ -42,7 +42,6 @@ public class TagController : MonoBehaviour
 
     IEnumerator OnSubmitGuess()
     {
-        Debug.Log("Submitted a Guess!");
         yield return new WaitForSeconds(2.0f);
         DestroyTags();
         SpawnTags();

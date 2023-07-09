@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.XR;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public GameObject TagSetPrefab;
     private Time _timePlayed;
     private Time _startTimePlayed;
-    private double _moneyMade;
+    public int GamesSold;
     public static GameManager Instance { get; private set; }
 
     private void Awake() {
@@ -31,18 +31,28 @@ public class GameManager : MonoBehaviour
     private void Start() {
         GameObject tagSet = Instantiate(TagSetPrefab);
         tagSet.GetComponent<TagController>().CustomerLogicObject = CustomerLogicObject;
+        GamesSold = 0;
     }
 
     private void Update()
     {
-        if (CustomerLogicObject.CheckResult)
-        {
-            CustomerLogicObject.CheckMastermindResult();
+        if (CustomerLogicObject.TurnsLeft == 0) {
+            GameLose();
+        }
+        if (CustomerLogicObject.CheckResult) {
+            if (CustomerLogicObject.CheckMastermindResult()) {
+                GameWin();
+            }
+            Debug.Log(CustomerLogicObject.TurnsLeft);
         }
     }
-    private void GameOver()
-    {
-        SceneManager.LoadScene("MaineMenu");
+
+    private void GameWin() {
+        GamesSold ++;
+    }
+
+    private void GameLose() {
+        SceneManager.LoadScene("MainMenu");
     }
 
 }
