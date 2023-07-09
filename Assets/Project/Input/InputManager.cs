@@ -23,6 +23,7 @@ public class InputManager : MonoBehaviour
         _playerControls.Enable();
 
         Cursor.lockState = CursorLockMode.Confined;
+        _playerControls.Player.LeftClick.performed += ctx => AudioManager.instance.PlaySound("click");
     }
 
     void OnEnable()
