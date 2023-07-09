@@ -4,6 +4,7 @@ using UnityEngine;
 using FMOD;
 using FMOD.Studio;
 using FMODUnity;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
@@ -27,7 +28,10 @@ public class AudioManager : MonoBehaviour
         // musicBus = RuntimeManager.GetBus("bus:/Music");
     }
     void Start(){
-       PlayMusicLoop(true);
+        if(SceneManager.GetActiveScene().buildIndex != 0){ // you have to use the loading scene in the final build or it wont play audio!!!
+            PlayMusicLoop(true);
+            PlaySound("start"); // add a coroutine so the music starts AFTER the startup sound
+        }
     }
     public void SetVolume(float vol, string op) {
         // masterBus.setVolume(vol);

@@ -37,6 +37,7 @@ public class LaunchableTagButton : MonoBehaviour
 
     public void OnRelease()
     {
+        AudioManager.instance.PlaySound("throw");
         Vector2 pos = InputManager.MousePosition;
         Ray ray = Camera.main.ScreenPointToRay(pos);
         GameObject newObject = Instantiate(Model, ray.origin + ray.direction * 0.5f, Quaternion.identity);

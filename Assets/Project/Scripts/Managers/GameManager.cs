@@ -43,16 +43,19 @@ public class GameManager : MonoBehaviour
             } else {
                 FeedbackDisplay.AddResult(CustomerLogicObject.GuessHistory[^1], CustomerLogicObject.GuessResult[^1]);
                 Debug.Log(CustomerLogicObject.TurnsLeft);
+                AudioManager.instance.PlaySound("incorrect");
             }
         }
     }
 
     private void GameWin() {
         GamesSold ++;
+        AudioManager.instance.PlaySound("success");
     }
 
     private void GameLose() {
         SceneManager.LoadScene("MainMenu");
+        AudioManager.instance.PlaySound("game over");
     }
 
 }
