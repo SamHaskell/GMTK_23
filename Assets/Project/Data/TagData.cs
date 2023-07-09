@@ -8,5 +8,6 @@ public class TagData : ScriptableObject
     public string Name;
     public Tag Tag;
     public Sprite TagSprite;
+    public Sprite TagSpriteInverted;
     public Sprite TagBackground;
 }

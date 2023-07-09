@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6997c950833445e8b3b4c141b2d8300, type: 3}
+  m_Name: FightingFantasy24
+  m_EditorClassIdentifier: 
+  Title: FightingFantasy24
+  Tags: 020000000700000001000000
+  Model: {fileID: 5605961088189169966, guid: a2bdc0def6fa146d497edbbc32b212eb, type: 3}
+  BoxArt: {fileID: 2800000, guid: 5f3b35fb7155b854285a5e0ecb987903, type: 3}

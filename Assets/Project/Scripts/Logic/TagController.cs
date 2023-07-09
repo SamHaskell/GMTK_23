@@ -47,14 +47,22 @@ public class TagController : MonoBehaviour
         SpawnTags();
     }
 
+    IEnumerator SelfDestruct(float timeDelay)
+    {
+        yield return new WaitForSeconds(timeDelay);
+        Destroy(this.gameObject);
+    }
+
     public void OnTagHit(GameObject tag, Tag guess, int order)
     {
         _guess[order] = guess;
         _tagsHit ++;
-        if (_tagsHit == CustomerLogicObject.SetSize) {
+        GameManager.Instance.ButtonSwitcher.DisableButton(guess);
+        Debug.Log("Temporarily Disabling");
+        Debug.Log(guess);
+        if (_tagsHit >= CustomerLogicObject.SetSize) {
             _tagsHit = 0;
             CustomerLogicObject.SubmitGuess(_guess);
-            
             StartCoroutine(OnSubmitGuess());
         }
     }
