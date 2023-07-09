@@ -7,6 +7,7 @@ public class HeadDriver : MonoBehaviour
 
     public Transform headIKTarget;
     public Transform bone;
+    public Transform headMesh;
     public float driveForce;
     public Texture2D[] expressions;
     public Faces face;
@@ -16,8 +17,8 @@ public class HeadDriver : MonoBehaviour
 
     // Start is called before the first frame update
     void Start(){
-        mat = GetComponent<Material>();
-        StartCoroutine(Blink());
+        mat = headMesh.GetComponent<Renderer>().material;
+        StartCoroutine(Blink());       
     }
     // Update is called once per frame
     void Update()
@@ -30,16 +31,16 @@ public class HeadDriver : MonoBehaviour
         }
         switch (face){
             case Faces.Relaxed:
-                mat.mainTexture = expressions[(int)face];
+                mat.SetTexture("_Texture2D",expressions[(int)face]);
                 break;
             case Faces.Blink:
-                mat.mainTexture = expressions[(int)face];
+                mat.SetTexture("_Texture2D",expressions[(int)face]);
                 break;
             case Faces.Happy:
-                mat.mainTexture = expressions[(int)face];
+                mat.SetTexture("_Texture2D",expressions[(int)face]);
                 break;
             case Faces.Angry:
-                mat.mainTexture = expressions[(int)face];
+                mat.SetTexture("_Texture2D",expressions[(int)face]);
                 break;
         }
     }
@@ -52,6 +53,9 @@ public class HeadDriver : MonoBehaviour
             face = Faces.Relaxed;
             }
         }
+    }
+    public void SetFace(Faces face, float time){
+        StartCoroutine(SetExpression(face, time));
     }
     IEnumerator SetExpression(Faces face, float time){
         var oldFace = face;

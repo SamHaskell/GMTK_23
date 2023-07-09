@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public int GamesSold;
     public static GameManager Instance { get; private set; }
 
+    public HeadDriver head;
     private void Awake() {
         if (Instance == null) {
             Instance = this;
@@ -62,11 +63,13 @@ public class GameManager : MonoBehaviour
         StartCoroutine(FloppyTime(solution));
         GamesSold ++;
         AudioManager.instance.PlaySound("success");
+        head.SetFace(Faces.Happy, 8f);
     }
 
     private void GameLose() {
         SceneManager.LoadScene("MainMenu");
         AudioManager.instance.PlaySound("game over");
+        head.SetFace(Faces.Angry, 8f);
     }
 
 }

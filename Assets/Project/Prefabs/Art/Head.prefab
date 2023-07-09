@@ -48,7 +48,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   headIKTarget: {fileID: 73155105868599150}
   bone: {fileID: 3017221893064702794}
+  headMesh: {fileID: 0}
   driveForce: 50
+  expressions: []
+  face: 0
+  blinkTime: 10
 --- !u!1001 &2865309953080429111
 PrefabInstance:
   m_ObjectHideFlags: 0
