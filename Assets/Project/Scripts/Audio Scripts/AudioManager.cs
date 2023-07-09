@@ -27,7 +27,7 @@ public class AudioManager : MonoBehaviour
         // musicBus = RuntimeManager.GetBus("bus:/Music");
     }
     void Start(){
-       
+       PlayMusicLoop(true);
     }
     public void SetVolume(float vol, string op) {
         // masterBus.setVolume(vol);
