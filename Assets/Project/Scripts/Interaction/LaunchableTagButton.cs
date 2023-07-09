@@ -42,7 +42,7 @@ public class LaunchableTagButton : MonoBehaviour
         Vector2 pos = InputManager.MousePosition;
         Ray ray = Camera.main.ScreenPointToRay(pos);
         GameObject newObject = Instantiate(Model, ray.origin + ray.direction * 0.5f, Quaternion.identity);
-        newObject.GetComponent<TagCollider>().Tag = Tag.ACTION; // TODO: FIX THIS
+        newObject.GetComponent<TagCollider>().Tag = TagData.Tag;
         Rigidbody rb = newObject.GetComponent<Rigidbody>();
         rb.isKinematic = false;
         rb.velocity = ray.direction * LaunchSpeed;

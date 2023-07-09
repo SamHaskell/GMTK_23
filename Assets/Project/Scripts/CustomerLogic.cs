@@ -37,6 +37,7 @@ public class CustomerLogic : MonoBehaviour
         // Debug.Log((int)guess[2]);
         // Debug.Log((int)guess[3]);
     }
+    
     public void CheckResultFlag() {
         if (!CheckResult) {
             CheckResult = true;

@@ -18,6 +18,15 @@ public class GameManager : MonoBehaviour
     private Time _timePlayed;
     private Time _startTimePlayed;
     private double _moneyMade;
+    public static GameManager Instance { get; private set; }
+
+    private void Awake() {
+        if (Instance == null) {
+            Instance = this;
+        } else {
+            Destroy(this);
+        }
+    }
 
     private void Start() {
         GameObject tagSet = Instantiate(TagSetPrefab);

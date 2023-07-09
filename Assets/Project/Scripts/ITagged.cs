@@ -10,7 +10,7 @@ public enum Tag
     SHOOTER,
     MYSTERY,
     FIGHTING,
-    // PUZZLE,
+    PUZZLE,
     // RPG,
     // STEALTH,
     // PLATFORMER,
