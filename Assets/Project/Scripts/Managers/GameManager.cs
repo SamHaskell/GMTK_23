@@ -8,6 +8,7 @@ using UnityEngine.XR;
 public class GameManager : MonoBehaviour
 {
     public CustomerLogic CustomerLogicObject; // Set manually
+    public Transform FloppySpawnTransform;
     public FeedbackDisplay FeedbackDisplay; // Set manually
     public GameObject TagSetPrefab;
     private Time _timePlayed;
@@ -48,9 +49,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private IEnumerator FloppyTime(SolutionData solution)
+    {
+        // TEMPORARY UNTIL WE ADD SOME PAZZAZZ
+        GameObject floppy = Instantiate(solution.Model, FloppySpawnTransform.position, FloppySpawnTransform.rotation);
+        floppy.transform.Find("CoverArt").GetComponent<MeshRenderer>().material.SetTexture("_MainTex", solution.BoxArt);
+        yield return new WaitForSeconds(5.0f);
+        Destroy(floppy);
+    }
+
     private void GameWin(SolutionData solution) {
-        GameObject floppy = Instantiate(solution.Model);
-        floppy.transform.Find("CoverArt").GetComponent<MeshRenderer>().material.SetTexture("_mainTex", solution.BoxArt);
+        StartCoroutine(FloppyTime(solution));
         GamesSold ++;
         AudioManager.instance.PlaySound("success");
     }
