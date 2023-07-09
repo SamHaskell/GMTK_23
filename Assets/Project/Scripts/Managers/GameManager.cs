@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
             GameLose();
             FeedbackDisplay.ClearResults();
         }
-        float r = Mathf.Lerp(0.0f, 255.0f, (TimeMax - _timeRemaining)/TimeMax);
+        float r = Mathf.Lerp(0.0f, 1.0f, (TimeMax - _timeRemaining)/TimeMax);
         float g = 1.0f - r;
         TimerUI.GetComponent<Image>().color = new Color(r, g, 0.0f);
     }
