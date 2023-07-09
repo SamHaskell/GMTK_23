@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
                 GameWin(CustomerLogicObject.SolutionData);
                 FeedbackDisplay.ClearResults();
                 Debug.Log("You Win!");
+
             } else {
                 FeedbackDisplay.AddResult(CustomerLogicObject.GuessHistory[^1], CustomerLogicObject.GuessResult[^1]);
                 Debug.Log(CustomerLogicObject.TurnsLeft);
@@ -65,12 +66,14 @@ public class GameManager : MonoBehaviour
         GamesSold ++;
         AudioManager.instance.PlaySound("success");
         head.SetFace(Faces.Happy, 8f);
+        CustomerLogicObject.ResetCustomerLogic();
         //EmitParticles(Feedback.Success);
     }
 
     private void GameLose() {
-        SceneManager.LoadScene("MainMenu");
         AudioManager.instance.PlaySound("game over");
+        SceneManager.LoadScene("InitializationScene");        
     }
+
 
 }
