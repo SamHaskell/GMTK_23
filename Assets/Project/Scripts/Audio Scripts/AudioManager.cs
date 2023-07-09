@@ -35,9 +35,11 @@ public class AudioManager : MonoBehaviour
         //     bank.getPath(out string path);     
         // }
         masterBus = FMODUnity.RuntimeManager.GetBus("bus:/");
-        if(SceneManager.GetActiveScene().buildIndex != 0){ // you have to use the loading scene in the final build or it wont play audio!!!
+        if(SceneManager.GetActiveScene().name == "Gameplay"){ // you have to use the loading scene in the final build or it wont play audio!!!
             PlayMusicLoop(true);
             PlaySound("start"); // add a coroutine so the music starts AFTER the startup sound
+        } else{
+
         }
     }
     public void SetVolume(float vol, string op) {
@@ -63,6 +65,9 @@ public class AudioManager : MonoBehaviour
                 break;
         }
 
+    }
+    public void PlayAmbientLoop(){
+        
     }
     public void PlaySound(string s) {
         // if a sound overlaps itself too much, tell andrew ok i will
