@@ -14,7 +14,7 @@ public class AudioManager : MonoBehaviour
     //
     // Start is called before the first frame update
     public static AudioManager instance;
-    private EventInstance iMusic, iClick;
+    private EventInstance iMusic, iClick, iAmbient;
     Bus masterBus, musicBus, sfxBus;
 
     private void Awake(){
@@ -39,7 +39,7 @@ public class AudioManager : MonoBehaviour
             PlayMusicLoop(true);
             PlaySound("start"); // add a coroutine so the music starts AFTER the startup sound
         } else{
-
+            PlaySound("ambient");
         }
     }
     public void SetVolume(float vol, string op) {
@@ -67,7 +67,7 @@ public class AudioManager : MonoBehaviour
 
     }
     public void PlayAmbientLoop(){
-        
+
     }
     public void PlaySound(string s) {
         // if a sound overlaps itself too much, tell andrew ok i will
@@ -91,7 +91,10 @@ public class AudioManager : MonoBehaviour
                 FMODUnity.RuntimeManager.PlayOneShot("event:/Major Failure");
                 break;
             case "explosion":
-                // FMODUnity.RuntimeManager.PlayOneShot("event:/Major Failure");
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Explosion");
+                break;
+            case "ambient":
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Ambience");
                 break;
         }
     }

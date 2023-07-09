@@ -4,7 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.XR;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public Transform FloppySpawnTransform;
     public ButtonSwitcher ButtonSwitcher;
     public FeedbackDisplay FeedbackDisplay; // Set manually
+    public GameObject TimerUI;
     public GameObject ScoreCounter;
     public GameObject TagSetPrefab;
     private Time _timePlayed;
@@ -67,6 +68,8 @@ public class GameManager : MonoBehaviour
             GameLose();
             FeedbackDisplay.ClearResults();
         }
+        float r = (TimeMax - _timeRemaining)/TimeMax;
+        TimerUI.GetComponent<Image>().color = new Color(r, 1-r, 0.0f);
     }
 
     private void OnScoreChange(int score)
