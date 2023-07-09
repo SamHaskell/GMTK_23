@@ -30,7 +30,12 @@ public class PauseMenu : MonoBehaviour
     }
     void Start()
     {
-        
+        var musicVol = PlayerPrefs.GetFloat("MusicVol", 0.8f);
+        var masterVol = PlayerPrefs.GetFloat("MasterVol", 0.8f);
+        MUSCSlider.value = musicVol;
+        AudioManager.instance.SetVolume(musicVol, "music");
+        SFXSlider.value = masterVol;
+        AudioManager.instance.SetVolume(masterVol, "music");
     }
     public void OnResume(){
         // vcam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = mouseSens;
@@ -48,6 +53,7 @@ public class PauseMenu : MonoBehaviour
     public void OnVolumeUpdate(){
         PlayerPrefs.SetFloat("Music Slider", MUSCSlider.value);
         AudioManager.instance.SetVolume(MUSCSlider.value, "music");
+        PlayerPrefs.SetFloat("MusicVol", MUSCSlider.value);
     }
     // pause menu isn't static so this doesn't work for FMSingle to use
     // public float getVolumeSlider() {
@@ -62,6 +68,7 @@ public class PauseMenu : MonoBehaviour
 
         PlayerPrefs.SetFloat("SFX Slider", SFXSlider.value);
         AudioManager.instance.SetVolume(SFXSlider.value, "sfx");
+        PlayerPrefs.SetFloat("MasterVol", SFXSlider.value);
     }
     public void OnOptions(){ 
         optionsActive = !optionsActive;

@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
         GameObject tagSet = Instantiate(TagSetPrefab);
         tagSet.GetComponent<TagController>().CustomerLogicObject = CustomerLogicObject;
         GamesSold = 0;
+        PlayerPrefs.SetInt("Score", 0);
     }
 
     private void Update()
@@ -73,6 +74,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void GameLose() {
+        PlayerPrefs.SetInt("Score", GamesSold * 100);
         AudioManager.instance.PlaySound("game over");
         AudioManager.instance.PlayMusicLoop(false);
         SceneManager.LoadScene("GameOver");        
