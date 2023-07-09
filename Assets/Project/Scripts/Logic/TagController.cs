@@ -57,6 +57,9 @@ public class TagController : MonoBehaviour
     {
         _guess[order] = guess;
         _tagsHit ++;
+        GameManager.Instance.ButtonSwitcher.DisableButton(guess);
+        Debug.Log("Temporarily Disabling");
+        Debug.Log(guess);
         if (_tagsHit >= CustomerLogicObject.SetSize) {
             _tagsHit = 0;
             CustomerLogicObject.SubmitGuess(_guess);
