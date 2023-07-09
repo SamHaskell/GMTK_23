@@ -8,6 +8,7 @@ public class LaunchableTagButton : MonoBehaviour
     private Image _image;
     private Vector3 _origin;
     private GameObject _clone;
+    private Color _baseColor;
     public GameObject Model;
     public float LaunchSpeed;
     public TagData TagData;
@@ -23,13 +24,13 @@ public class LaunchableTagButton : MonoBehaviour
     public void MarkAsUsed()
     {
         _available = false;
-        // transform.Find("Icon").GetComponentInChildren<Image>().color = Color.black;
+        transform.GetComponent<Image>().color = Color.white;
     }
 
     public void MarkAsFree()
     {
         _available = true;
-        // transform.Find("Icon").GetComponentInChildren<Image>().color = Color.white;
+        transform.GetComponent<Image>().color = _baseColor;
     }
 
     void Awake()
@@ -37,6 +38,7 @@ public class LaunchableTagButton : MonoBehaviour
         _available = true;
         _image = GetComponent<Image>();
         _origin = transform.position;
+        _baseColor = transform.GetComponent<Image>().color;
     }
 
     public void OnPress()
