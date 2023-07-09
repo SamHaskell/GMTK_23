@@ -72,7 +72,8 @@ public class GameManager : MonoBehaviour
 
     private void GameLose() {
         AudioManager.instance.PlaySound("game over");
-        SceneManager.LoadScene("InitializationScene");        
+        AudioManager.instance.PlayMusicLoop(false);
+        SceneManager.LoadScene("GameOver");        
     }
 
 
