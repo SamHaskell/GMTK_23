@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
 
     private void GameWin(SolutionData solution) {
         GameObject floppy = Instantiate(solution.Model);
-        // floppy.GetComponentInChildren<>
+        floppy.transform.Find("CoverArt").GetComponent<MeshRenderer>().material.SetTexture("_mainTex", solution.BoxArt);
         GamesSold ++;
     }
 
