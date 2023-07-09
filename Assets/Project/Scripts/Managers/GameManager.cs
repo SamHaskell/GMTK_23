@@ -7,15 +7,8 @@ using UnityEngine.XR;
 
 public class GameManager : MonoBehaviour
 {
-    /*
-    Start game ()
-    End game ()
-    
-    Change scenes ()
-     */
-
-    public CustomerLogic CustomerLogicObject;
-    public FeedbackDisplay FeedbackDisplay;
+    public CustomerLogic CustomerLogicObject; // Set manually
+    public FeedbackDisplay FeedbackDisplay; // Set manually
     public GameObject TagSetPrefab;
     private Time _timePlayed;
     private Time _startTimePlayed;

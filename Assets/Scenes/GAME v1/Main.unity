@@ -1595,7 +1595,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1145503718}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0edc0e883b93c4e82a48149eec790763, type: 3}
+  m_Script: {fileID: 11500000, guid: 05d602d0663114447a6da03817956f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PanelPrefab: {fileID: 6963383361605133628, guid: f0707c115dede444babcd0c0957958ad,
