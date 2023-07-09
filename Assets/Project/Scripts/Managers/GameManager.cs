@@ -15,7 +15,14 @@ public class GameManager : MonoBehaviour
     private Time _timePlayed;
     private Time _startTimePlayed;
     public int GamesSold;
+    private float _timeRemaining;
     public static GameManager Instance { get; private set; }
+
+    [Header("Time Pressure Parameters")]
+    public float InitialTime;
+    public float BaseTimeAddedPerWin;
+    public float TimeAddedPerRemainingGuess;
+    public float TimeMax;
 
     public HeadDriver head;
     private void Awake() {
@@ -30,11 +37,14 @@ public class GameManager : MonoBehaviour
         GameObject tagSet = Instantiate(TagSetPrefab);
         tagSet.GetComponent<TagController>().CustomerLogicObject = CustomerLogicObject;
         GamesSold = 0;
+        _timeRemaining = InitialTime;
         PlayerPrefs.SetInt("Score", 0);
     }
 
     private void Update()
     {
+        _timeRemaining -= Time.deltaTime;
+        Debug.Log(_timeRemaining);
         if (CustomerLogicObject.TurnsLeft == 0) {
             GameLose();
             FeedbackDisplay.ClearResults();
@@ -44,14 +54,14 @@ public class GameManager : MonoBehaviour
                 GameWin(CustomerLogicObject.SolutionData);
                 FeedbackDisplay.ClearResults();
                 Debug.Log("You Win!");
-
             } else {
                 FeedbackDisplay.AddResult(CustomerLogicObject.GuessHistory[^1], CustomerLogicObject.GuessResult[^1]);
-                Debug.Log(CustomerLogicObject.TurnsLeft);
+                // Debug.Log(CustomerLogicObject.TurnsLeft);
                 AudioManager.instance.PlaySound("incorrect");
                 head.SetFace(Faces.Angry, 4f);
             }
             ButtonSwitcher.EnableButtons();
+            _timeRemaining = Mathf.Clamp(_timeRemaining, _timeRemaining, TimeMax);
         }
     }
 
@@ -69,7 +79,13 @@ public class GameManager : MonoBehaviour
         GamesSold ++;
         AudioManager.instance.PlaySound("success");
         head.SetFace(Faces.Happy, 8f);
+        // TIME ADDITION
+        _timeRemaining += BaseTimeAddedPerWin;
+        _timeRemaining += CustomerLogicObject.TurnsLeft * TimeAddedPerRemainingGuess;
+        //
         CustomerLogicObject.ResetCustomerLogic();
+
+
         //EmitParticles(Feedback.Success);
     }
 
