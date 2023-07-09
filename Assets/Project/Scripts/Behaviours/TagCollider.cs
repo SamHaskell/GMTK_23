@@ -26,10 +26,16 @@ public class TagCollider : MonoBehaviour
         if (HasCollided) {
             return;
         }
+
+        if (collision.gameObject.tag != "Target") {
+            return;
+        }
+
         HasCollided = true;
 
         _rb.isKinematic = false;
         _rb.useGravity = true;
+        
         if (collision.gameObject.tag == "Target") {
             _rb.AddForceAtPosition(collision.relativeVelocity, collision.transform.position, ForceMode.Impulse);
             collision.gameObject.GetComponent<Collider>().enabled = false;

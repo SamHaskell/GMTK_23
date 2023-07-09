@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6997c950833445e8b3b4c141b2d8300, type: 3}
-  m_Name: SolutionData
+  m_Name: FightingFantasy24
   m_EditorClassIdentifier: 
-  Title: TestSolution
-  Tags: 01000000020000000300000004000000
+  Title: FightingFantasy24
+  Tags: 020000000700000001000000
+  Model: {fileID: 3344443135023059296, guid: 0947179b877fc471ebb6b9116c3ca892, type: 3}
+  BoxArt: {fileID: 2800000, guid: 5f3b35fb7155b854285a5e0ecb987903, type: 3}

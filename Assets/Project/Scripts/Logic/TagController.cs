@@ -54,7 +54,6 @@ public class TagController : MonoBehaviour
         if (_tagsHit == CustomerLogicObject.SetSize) {
             _tagsHit = 0;
             CustomerLogicObject.SubmitGuess(_guess);
-            
             StartCoroutine(OnSubmitGuess());
         }
     }

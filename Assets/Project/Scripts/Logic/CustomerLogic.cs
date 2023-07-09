@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class CustomerLogic : MonoBehaviour
 {
@@ -8,8 +10,8 @@ public class CustomerLogic : MonoBehaviour
     public List<SolutionData> PossibleSolutions;
     public SolutionData SolutionData;
     public int CustomerPatience;
-    public List<Tag[]> GuessHistory;
-    public List<Dictionary<Result, int>> GuessResult;
+    public List<Tag[]> GuessHistory { get; private set; }
+    public List<Dictionary<Result, int>> GuessResult { get; private set; }
     private Mastermind _customerMastermind;
     public int SetSize;
     public int TurnsLeft;
@@ -17,12 +19,15 @@ public class CustomerLogic : MonoBehaviour
 
 
     private void Start() {
-        GuessHistory = new();
-        GuessResult = new();
-        _customerMastermind = new Mastermind(SolutionData, CustomerPatience);
+        GuessHistory = new List<Tag[]>();
+        GuessResult = new List<Dictionary<Result, int>>();
+        
         SetSize = SolutionData.Tags.Length;
         TurnsLeft = CustomerPatience;
+
+        _customerMastermind = new Mastermind(SolutionData, CustomerPatience);
         _tagsForMakeGuess = new Tag[SetSize];
+        
         CheckResult = false;
     }
 
@@ -32,16 +37,10 @@ public class CustomerLogic : MonoBehaviour
 
     public void SubmitGuess(Tag[] guess)
     {
-        _customerMastermind.MakeGuess(guess);
-        CheckResultFlag();
         GuessHistory.Add(guess);
+        _customerMastermind.MakeGuess(guess);
+        CheckResult = true;
         TurnsLeft --;
-    }
-    
-    public void CheckResultFlag() {
-        if (!CheckResult) {
-            CheckResult = true;
-        }
     }
 
     public bool CheckMastermindResult()
@@ -50,6 +49,7 @@ public class CustomerLogic : MonoBehaviour
         Dictionary<Result, int> result = _customerMastermind.CheckResult();
         GuessResult.Add(result);
         CheckResult = false;
+        // need to check isSuccess and change it so that GameManager can detect a win.
         return isSuccess;
     }
 

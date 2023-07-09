@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e892afa00f9547a68c1d4276f584576, type: 3}
-  m_Name: AdventureTagData
+  m_Name: Platformer
   m_EditorClassIdentifier: 
-  Name: Adventure
-  Tag: 2
-  TagSprite: {fileID: -1198865972, guid: 6acfbb89dbeca8b47ae8197fcbbcae2e, type: 3}
+  Name: Platformer
+  Tag: 6
+  TagSprite: {fileID: 1605466935, guid: 6acfbb89dbeca8b47ae8197fcbbcae2e, type: 3}
   TagBackground: {fileID: 0}

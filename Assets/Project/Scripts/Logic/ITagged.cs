@@ -9,12 +9,12 @@ public enum Tag
     ADVENTURE,
     SHOOTER,
     MYSTERY,
-    FIGHTING,
-    PUZZLE,
+    INDIE,
+    // PUZZLE,
     // RPG,
     // STEALTH,
-    // PLATFORMER,
-    // STRATEGY
+    PLATFORMER,
+    STRATEGY
 }
 
 public interface ITagged

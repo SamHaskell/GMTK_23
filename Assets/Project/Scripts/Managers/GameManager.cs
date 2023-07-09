@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR;
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
      */
 
     public CustomerLogic CustomerLogicObject;
+    public FeedbackDisplay FeedbackDisplay;
     public GameObject TagSetPrefab;
     private Time _timePlayed;
     private Time _startTimePlayed;
@@ -38,12 +40,17 @@ public class GameManager : MonoBehaviour
     {
         if (CustomerLogicObject.TurnsLeft == 0) {
             GameLose();
+            FeedbackDisplay.ClearResults();
         }
         if (CustomerLogicObject.CheckResult) {
             if (CustomerLogicObject.CheckMastermindResult()) {
                 GameWin();
+                FeedbackDisplay.ClearResults();
+                Debug.Log("You Win!");
+            } else {
+                FeedbackDisplay.AddResult(CustomerLogicObject.GuessHistory[^1], CustomerLogicObject.GuessResult[^1]);
+                Debug.Log(CustomerLogicObject.TurnsLeft);
             }
-            Debug.Log(CustomerLogicObject.TurnsLeft);
         }
     }
 

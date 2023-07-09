@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6997c950833445e8b3b4c141b2d8300, type: 3}
-  m_Name: CallOfShooty
+  m_Name: ZCOM
   m_EditorClassIdentifier: 
-  Title: Call Of Shooty
-  Tags: 01000000030000000500000002000000
+  Title: ZCOM
+  Tags: 050000000300000007000000
   Model: {fileID: 3344443135023059296, guid: 0947179b877fc471ebb6b9116c3ca892, type: 3}
-  BoxArt: {fileID: 2800000, guid: 10bea04ee2469a44b8487971a5d688ef, type: 3}
+  BoxArt: {fileID: 2800000, guid: fb81433cca6321c4197a5edca216cab7, type: 3}
