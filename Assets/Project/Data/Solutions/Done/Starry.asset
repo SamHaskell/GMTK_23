@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: Starry
   Tags: 060000000400000002000000
-  Model: {fileID: 3344443135023059296, guid: 0947179b877fc471ebb6b9116c3ca892, type: 3}
+  Model: {fileID: 5605961088189169966, guid: a2bdc0def6fa146d497edbbc32b212eb, type: 3}
   BoxArt: {fileID: 2800000, guid: 4d88b9bcee4cff9438d60be1e274c431, type: 3}
