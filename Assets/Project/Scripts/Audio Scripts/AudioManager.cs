@@ -23,11 +23,18 @@ public class AudioManager : MonoBehaviour
         }else {
             instance = this;
         }
+        
         // musicBus = RuntimeManager.GetBus("bus:/Music");
         // sfxBus = RuntimeManager.GetBus("bus:/SFX");
         // musicBus = RuntimeManager.GetBus("bus:/Music");
     }
     void Start(){
+        // FMODUnity.RuntimeManager.StudioSystem.getBankList(out FMOD.Studio.Bank[] loadedBanks);
+        // foreach (FMOD.Studio.Bank bank in loadedBanks)
+        // {
+        //     bank.getPath(out string path);     
+        // }
+        masterBus = FMODUnity.RuntimeManager.GetBus("bus:/");
         if(SceneManager.GetActiveScene().buildIndex != 0){ // you have to use the loading scene in the final build or it wont play audio!!!
             PlayMusicLoop(true);
             PlaySound("start"); // add a coroutine so the music starts AFTER the startup sound
@@ -37,10 +44,10 @@ public class AudioManager : MonoBehaviour
         // masterBus.setVolume(vol);
         switch (op) {
             case ("music"):
-                musicBus.setVolume(vol);
+                iMusic.setVolume(vol);
                 break;
-            case ("sfx"):
-                sfxBus.setVolume(vol);
+            case ("sfx"): //this is for the master not just sfx cause there is no sfx bus
+                masterBus.setVolume(vol);
                 break;
         }
     }
