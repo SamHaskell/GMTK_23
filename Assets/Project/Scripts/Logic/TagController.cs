@@ -1,10 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Pool;
 
 public class TagController : MonoBehaviour
 {
@@ -35,7 +31,7 @@ public class TagController : MonoBehaviour
         for (int i = 0; i < CustomerLogicObject.SetSize; i++) {
             _tags[i] = Instantiate(TagPrefab, TagTargets[i].position, TagTargets[i].rotation);
             _tags[i].GetComponent<TagCollider>().Controller = this;
-            _tags[i].GetComponent<TagCollider>().Tag = CustomerLogicObject.SolutionData.Tags[i];
+            _tags[i].GetComponent<TagCollider>().Tag = CustomerLogicObject.CurrentDisk.Tags[i];
             _tags[i].GetComponent<TagCollider>().Order = i;
         }
     }

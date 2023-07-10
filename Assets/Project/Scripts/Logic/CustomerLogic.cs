@@ -1,20 +1,17 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Pool;
 
 public class CustomerLogic : MonoBehaviour
 {
     public bool CheckResult;
-    public List<SolutionData> PossibleSolutions;
-    public SolutionData SolutionData;
-    public int CustomerPatience;
+    public List<DiskData> PossibleDisks;
+    public DiskData CurrentDisk;
+    public int MaxTurns;
     public List<Tag[]> GuessHistory { get; private set; }
     public List<Dictionary<Result, int>> GuessResult { get; private set; }
-    private Mastermind _customerMastermind;
     public int SetSize;
     public int TurnsLeft;
+    private Mastermind _customerMastermind;
     private Tag[] _tagsForMakeGuess;
 
 
@@ -22,11 +19,11 @@ public class CustomerLogic : MonoBehaviour
         GuessHistory = new List<Tag[]>();
         GuessResult = new List<Dictionary<Result, int>>();
 
-        int sol = Random.Range(0, PossibleSolutions.Count);
-        SolutionData = PossibleSolutions[sol];
-        SetSize = SolutionData.Tags.Length;
-        TurnsLeft = CustomerPatience;
-        _customerMastermind = new Mastermind(SolutionData, CustomerPatience);
+        int sol = Random.Range(0, PossibleDisks.Count);
+        CurrentDisk = PossibleDisks[sol];
+        SetSize = CurrentDisk.Tags.Length;
+        TurnsLeft = MaxTurns;
+        _customerMastermind = new Mastermind(CurrentDisk, MaxTurns);
         _tagsForMakeGuess = new Tag[SetSize];
         
         CheckResult = false;

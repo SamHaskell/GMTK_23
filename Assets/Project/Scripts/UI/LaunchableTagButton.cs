@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 public class LaunchableTagButton : MonoBehaviour
 {
     private Image _image;
@@ -13,13 +10,6 @@ public class LaunchableTagButton : MonoBehaviour
     public float LaunchSpeed;
     public TagData TagData;
     public bool _available;
-    #if UNITY_EDITOR
-        void OnValidate()
-        {
-            // GetComponentInChildren<TMP_Text>().text = TagData.Name;
-            // transform.Find("Icon").GetComponentInChildren<Image>().sprite = TagData.TagSprite;
-        }
-    #endif
 
     public void MarkAsUsed()
     {
@@ -59,7 +49,7 @@ public class LaunchableTagButton : MonoBehaviour
     public void OnRelease()
     {
         if (_available) {
-            AudioManager.instance.PlaySound("throw");
+            AudioManager.Instance.PlaySound("throw");
             Vector2 pos = InputManager.MousePosition;
             Ray ray = Camera.main.ScreenPointToRay(pos);
             GameObject newObject = Instantiate(Model, ray.origin + ray.direction * 0.5f, Quaternion.identity);

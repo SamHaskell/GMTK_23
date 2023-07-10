@@ -1,22 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
 
 
 public class PauseMenu : MonoBehaviour
-{
-    // Start is called before the first frame update    
+{ 
     public PlayerControls input;
     public bool menuActive = false, optionsActive = false;
     public GameObject settingsWindow;
     public Slider MUSCSlider, SFXSlider;
-    // public CinemachineVirtualCamera vcam;
     public float mouseSens = 0.1f, volume = 1.0f, shit = 1.0f;
-    // public Volume postProcessingVolume;
-
     void Awake(){
         input = new PlayerControls();
         // input.Walking.Pause.performed += ctx => OnPause();
@@ -33,9 +25,9 @@ public class PauseMenu : MonoBehaviour
         var musicVol = PlayerPrefs.GetFloat("MusicVol", 0.8f);
         var masterVol = PlayerPrefs.GetFloat("MasterVol", 0.8f);
         MUSCSlider.value = musicVol;
-        AudioManager.instance.SetVolume(musicVol, "music");
+        AudioManager.Instance.SetVolume(musicVol, "music");
         SFXSlider.value = masterVol;
-        AudioManager.instance.SetVolume(masterVol, "music");
+        AudioManager.Instance.SetVolume(masterVol, "music");
     }
     public void OnResume(){
         // vcam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = mouseSens;
@@ -52,7 +44,7 @@ public class PauseMenu : MonoBehaviour
     // }
     public void OnVolumeUpdate(){
         PlayerPrefs.SetFloat("Music Slider", MUSCSlider.value);
-        AudioManager.instance.SetVolume(MUSCSlider.value, "music");
+        AudioManager.Instance.SetVolume(MUSCSlider.value, "music");
         PlayerPrefs.SetFloat("MusicVol", MUSCSlider.value);
     }
     // pause menu isn't static so this doesn't work for FMSingle to use
@@ -67,7 +59,7 @@ public class PauseMenu : MonoBehaviour
         // actualShit.intensity.value = shit;
 
         PlayerPrefs.SetFloat("SFX Slider", SFXSlider.value);
-        AudioManager.instance.SetVolume(SFXSlider.value, "sfx");
+        AudioManager.Instance.SetVolume(SFXSlider.value, "sfx");
         PlayerPrefs.SetFloat("MasterVol", SFXSlider.value);
     }
     public void OnOptions(){ 

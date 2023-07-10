@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TagCollider : MonoBehaviour
@@ -15,36 +13,25 @@ public class TagCollider : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         HasCollided = false;
     }
-    
-    void Update()
-    {
-        
-    }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (HasCollided) {
+        if (HasCollided || (collision.gameObject.tag != "Target")) {
             return;
+        } else {
+            HasCollided = true;
         }
-
-        if (collision.gameObject.tag != "Target") {
-            return;
-        }
-
-        HasCollided = true;
 
         _rb.isKinematic = false;
         _rb.useGravity = true;
-        
         _rb.AddForceAtPosition(collision.relativeVelocity, collision.transform.position, ForceMode.Impulse);
         collision.gameObject.GetComponent<Collider>().enabled = false;
-
-        AudioManager.instance.PlaySound("explosion");
 
         if (Tag != Tag.NONE) {
             if (Controller != null) {
                 Controller.OnTagHit(gameObject, collision.gameObject.GetComponent<TagCollider>().Tag, this.Order);
             }
         }
+        AudioManager.Instance.PlaySound("explosion");
     }
 }

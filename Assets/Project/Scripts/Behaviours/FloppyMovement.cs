@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FloppyMovement : MonoBehaviour
@@ -18,8 +16,6 @@ public class FloppyMovement : MonoBehaviour
             Random.Range(0.0f, 100.0f));
         _time = 0;
     }
-
-    // Update is called once per frame
     void Update()
     {
         _time += Time.deltaTime;
@@ -28,7 +24,6 @@ public class FloppyMovement : MonoBehaviour
             DisplacementAmplitudes.y * Mathf.Sin((_time + _timeOffset.y) * DisplacementFrequencies.y),
             DisplacementAmplitudes.z * Mathf.Sin((_time + _timeOffset.z) * DisplacementFrequencies.z)
         );
-        transform.position = _origin + displacement;
-        
+        transform.position = _origin + displacement;  
     }
 }

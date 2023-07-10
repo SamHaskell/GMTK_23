@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public CustomerLogic CustomerLogicObject; // Set manually
     public Transform FloppySpawnTransform;
+    public bool IsTutorial;
     public ButtonSwitcher ButtonSwitcher;
     public FeedbackDisplay FeedbackDisplay; // Set manually
     public GameObject TimerUI;
@@ -19,6 +18,7 @@ public class GameManager : MonoBehaviour
     private Time _startTimePlayed;
     public int GamesSold;
     private float _timeRemaining;
+    public bool UseTimer;
     public static GameManager Instance { get; private set; }
 
     [Header("Time Pressure Parameters")]
@@ -26,8 +26,7 @@ public class GameManager : MonoBehaviour
     public float BaseTimeAddedPerWin;
     public float TimeAddedPerRemainingGuess;
     public float TimeMax;
-
-    public HeadDriver head;
+    public HeadDriver Head;
     private void Awake() {
         if (Instance == null) {
             Instance = this;
@@ -36,7 +35,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private IEnumerator TutorialTimeCoRo() {
+        yield return new WaitForSeconds(60.0f);
+        SceneManager.LoadScene(1);
+    }
+
     private void Start() {
+        if (IsTutorial) {
+            TutorialTimeCoRo();
+            IsTutorial = false;
+        }
         GameObject tagSet = Instantiate(TagSetPrefab);
         tagSet.GetComponent<TagController>().CustomerLogicObject = CustomerLogicObject;
         GamesSold = 0;
@@ -51,13 +59,13 @@ public class GameManager : MonoBehaviour
         Debug.Log(_timeRemaining);
         if (CustomerLogicObject.CheckResult) {
             if (CustomerLogicObject.CheckMastermindResult()) {
-                GameWin(CustomerLogicObject.SolutionData);
+                GameWin(CustomerLogicObject.CurrentDisk);
                 FeedbackDisplay.ClearResults();
                 Debug.Log("You Win!");
             } else {
                 FeedbackDisplay.AddResult(CustomerLogicObject.GuessHistory[^1], CustomerLogicObject.GuessResult[^1]);
-                AudioManager.instance.PlaySound("incorrect");
-                head.SetFace(Faces.Angry, 4f);
+                AudioManager.Instance.PlaySound("incorrect");
+                Head.SetFace(Faces.Angry, 4f);
             }
             ButtonSwitcher.EnableButtons();
             _timeRemaining = Mathf.Clamp(_timeRemaining, _timeRemaining, TimeMax);
@@ -68,7 +76,7 @@ public class GameManager : MonoBehaviour
             FeedbackDisplay.ClearResults();
         }
         float r = (TimeMax - _timeRemaining)/TimeMax;
-        TimerUI.GetComponent<Image>().color = new Color(r, 1-r, 0.0f);
+        if (UseTimer) {TimerUI.GetComponent<Image>().color = new Color(r, 1-r, 0.0f);}
     }
 
     private void OnScoreChange(int score)
@@ -76,7 +84,7 @@ public class GameManager : MonoBehaviour
         ScoreCounter.GetComponent<TMP_Text>().text = (GamesSold*100).ToString();
     }
 
-    private IEnumerator FloppyTime(SolutionData solution)
+    private IEnumerator FloppyTime(DiskData solution)
     {
         GameObject floppy = Instantiate(solution.Model, FloppySpawnTransform.position, FloppySpawnTransform.rotation);
         floppy.transform.Find("CoverArt").GetComponent<MeshRenderer>().material.SetTexture("_MainTex", solution.BoxArt);
@@ -84,12 +92,12 @@ public class GameManager : MonoBehaviour
         Destroy(floppy);
     }
 
-    private void GameWin(SolutionData solution) {
+    private void GameWin(DiskData solution) {
         StartCoroutine(FloppyTime(solution));
         GamesSold ++;
         OnScoreChange(GamesSold);
-        AudioManager.instance.PlaySound("success");
-        head.SetFace(Faces.Happy, 8f);
+        AudioManager.Instance.PlaySound("success");
+        Head.SetFace(Faces.Happy, 8f);
         _timeRemaining += BaseTimeAddedPerWin;
         _timeRemaining += CustomerLogicObject.TurnsLeft * TimeAddedPerRemainingGuess;
         CustomerLogicObject.ResetCustomerLogic();
@@ -98,8 +106,8 @@ public class GameManager : MonoBehaviour
 
     private void GameLose() {
         PlayerPrefs.SetInt("Score", GamesSold * 100);
-        AudioManager.instance.PlaySound("game over");
-        AudioManager.instance.PlayMusicLoop(false);
+        AudioManager.Instance.PlaySound("game over");
+        AudioManager.Instance.PlayMusicLoop(false);
         SceneManager.LoadScene("GameOver");        
     }
 

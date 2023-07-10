@@ -1,14 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
-
-public enum Result {
-    INCORRECT,
-    PARTIAL,
-    CORRECT
-}
 
 public class Mastermind {
     public List<List<Result>> GuessHistory; // Can change, depending on what UI needs
@@ -17,7 +9,7 @@ public class Mastermind {
     public int TurnsLeft;
     public Dictionary<Result, int> GuessResult;
 
-    public Mastermind(SolutionData solution, int turns)
+    public Mastermind(DiskData solution, int turns)
     {
         this.KnownTags = new();
         GuessHistory = new();
