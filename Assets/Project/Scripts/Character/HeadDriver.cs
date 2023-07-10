@@ -4,52 +4,39 @@ using UnityEngine;
 public class HeadDriver : MonoBehaviour
 {
 
-    public Transform headIKTarget;
-    public Transform bone;
-    public Transform headMesh;
-    public float driveForce;
-    public Texture2D[] expressions;
-    public Faces face;
+    public Transform HeadIKTarget;
+    public Transform Bone;
+    public Transform HeadMesh;
+    public float DriveForce;
+    public Texture2D[] Expressions;
+    public Faces Face;
     [SerializeField]
-    private float blinkTime = 6f;
-    Material mat;
+    private float _blinkTime = 6f;
+    Material _mat;
 
     // Start is called before the first frame update
     void Start(){
-        mat = headMesh.GetComponent<Renderer>().material;
+        _mat = HeadMesh.GetComponent<Renderer>().material;
         StartCoroutine(Blink());       
     }
     // Update is called once per frame
     void Update()
     {
         // bone.transform.localRotation = Quaternion.Euler(jointDriver.currentDirection);
-        bone.transform.localRotation = Quaternion.Slerp(bone.transform.localRotation, Quaternion.Euler((bone.transform.position-headIKTarget.transform.position)*100f), Time.deltaTime * driveForce);
+        Bone.transform.localRotation = Quaternion.Slerp(Bone.transform.localRotation, Quaternion.Euler((Bone.transform.position - HeadIKTarget.transform.position)*100f), Time.deltaTime * DriveForce);
         // bone.transform.localRotation = Quaternion.Euler((bone.transform.position-headIKTarget.transform.position)*100f);
-        if(Quaternion.Angle(bone.transform.localRotation, Quaternion.Euler((bone.transform.position-headIKTarget.transform.position)*100f)) > 30f){
-            StartCoroutine(SetExpression(face, 0.1f));
+        if(Quaternion.Angle(Bone.transform.localRotation, Quaternion.Euler((Bone.transform.position - HeadIKTarget.transform.position)*100f)) > 30f){
+            StartCoroutine(SetExpression(Face, 0.1f));
         }
-        switch (face){
-            case Faces.Relaxed:
-                mat.SetTexture("_Texture2D",expressions[(int)face]);
-                break;
-            case Faces.Blink:
-                mat.SetTexture("_Texture2D",expressions[(int)face]);
-                break;
-            case Faces.Happy:
-                mat.SetTexture("_Texture2D",expressions[(int)face]);
-                break;
-            case Faces.Angry:
-                mat.SetTexture("_Texture2D",expressions[(int)face]);
-                break;
-        }
+        _mat.SetTexture("_Texture2D", Expressions[(int)Face]);
     }
     IEnumerator Blink(){
         while(true){
-        yield return new WaitForSeconds(Random.Range(blinkTime-2f, blinkTime+2f));
-        if(face == Faces.Relaxed){
-            face = Faces.Blink;
+        yield return new WaitForSeconds(Random.Range(_blinkTime - 2f, _blinkTime + 2f));
+        if(Face == Faces.Relaxed){
+            Face = Faces.Blink;
             yield return new WaitForSeconds(0.2f);
-            face = Faces.Relaxed;
+            Face = Faces.Relaxed;
             }
         }
     }
@@ -59,10 +46,10 @@ public class HeadDriver : MonoBehaviour
     }
     IEnumerator SetExpression(Faces newFace, float time){
         var oldFace = Faces.Relaxed; //lol
-        face = newFace;
+        Face = newFace;
         // Debug.Log(face);
         yield return new WaitForSeconds(time);
-        face = oldFace;
+        Face = oldFace;
     }
 }
 public enum Faces{

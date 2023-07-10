@@ -3,10 +3,10 @@ using UnityEngine;
 public class TagCollider : MonoBehaviour
 {
     public Tag Tag;
-    public TagController Controller;
+    public TargetManager TargetManager;
     public int Order;
-    private Rigidbody _rb;
     public bool HasCollided;
+    private Rigidbody _rb;
 
     void Start()
     {
@@ -28,8 +28,8 @@ public class TagCollider : MonoBehaviour
         collision.gameObject.GetComponent<Collider>().enabled = false;
 
         if (Tag != Tag.NONE) {
-            if (Controller != null) {
-                Controller.OnTagHit(gameObject, collision.gameObject.GetComponent<TagCollider>().Tag, this.Order);
+            if (TargetManager != null) {
+                TargetManager.OnHit(gameObject, collision.gameObject.GetComponent<TagCollider>().Tag, this.Order);
             }
         }
         AudioManager.Instance.PlaySound("explosion");

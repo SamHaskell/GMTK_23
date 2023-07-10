@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: IndieShooterMystery
   m_EditorClassIdentifier: 
   Title: IndieShooterMystery
-  Tags: 
+  Tags: 050000000300000004000000
   Model: {fileID: 5605961088189169966, guid: a2bdc0def6fa146d497edbbc32b212eb, type: 3}
   BoxArt: {fileID: 0}

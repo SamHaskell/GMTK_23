@@ -6,81 +6,82 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public CustomerLogic CustomerLogicObject; // Set manually
-    public Transform FloppySpawnTransform;
+    public RoundManager RoundManager;
+    public TargetManager TargetManager;
     public bool IsTutorial;
     public ButtonSwitcher ButtonSwitcher;
     public FeedbackDisplay FeedbackDisplay; // Set manually
-    public GameObject TimerUI;
-    public GameObject ScoreCounter;
     public GameObject TagSetPrefab;
     private Time _timePlayed;
     private Time _startTimePlayed;
-    public int GamesSold;
     private float _timeRemaining;
-    public bool UseTimer;
-    public static GameManager Instance { get; private set; }
-
-    [Header("Time Pressure Parameters")]
-    public float InitialTime;
-    public float BaseTimeAddedPerWin;
-    public float TimeAddedPerRemainingGuess;
-    public float TimeMax;
     public HeadDriver Head;
+    public Transform FloppySpawnTransform;
+    public static GameManager Instance { get; private set; }
+    
+    [Header("Scoring")]
+    public GameObject ScoreCounter;
+    public int GamesSold;
+
+    [Header("Timing")]
+    public GameObject TimerUI;
+    public bool UseTimer = true;
+    public float InitialTime = 240;
+    public float TimeAddedPerWin = 60;
+    public float TimeAddedPerRemainingGuess = 10;
+    public float TimeMax = 240;
     private void Awake() {
         if (Instance == null) {
             Instance = this;
         } else {
             Destroy(this);
         }
+
+        if (TargetManager != null) {
+            TargetManager.OnGuess += OnGuess;
+            TargetManager.OnTargetHit += OnTargetHit;
+        }
+        if (RoundManager != null) {
+            RoundManager.OnCorrectGuess += OnRoundWin;
+            RoundManager.OnIncorrectGuess += OnIncorrectGuess;
+            RoundManager.OnRoundLose += OnRoundLose;
+        }
     }
 
+    //TODO: Replace this with proper tutorial solution
     private IEnumerator TutorialTimeCoRo() {
-        yield return new WaitForSeconds(60.0f);
+        yield return new WaitForSeconds(57.0f);
         SceneManager.LoadScene(1);
     }
 
     private void Start() {
+        //TODO: Replace this with proper tutorial solution
         if (IsTutorial) {
-            TutorialTimeCoRo();
+            StartCoroutine(TutorialTimeCoRo());
             IsTutorial = false;
+        } else {
+            UpdateScore(0);
+            _timeRemaining = InitialTime;
+            PlayerPrefs.SetInt("Score", 0);
+            NewRound();
         }
-        GameObject tagSet = Instantiate(TagSetPrefab);
-        tagSet.GetComponent<TagController>().CustomerLogicObject = CustomerLogicObject;
-        GamesSold = 0;
-        OnScoreChange(GamesSold);
-        _timeRemaining = InitialTime;
-        PlayerPrefs.SetInt("Score", 0);
     }
 
-    private void Update()
-    {
-        _timeRemaining -= Time.deltaTime;
-        Debug.Log(_timeRemaining);
-        if (CustomerLogicObject.CheckResult) {
-            if (CustomerLogicObject.CheckMastermindResult()) {
-                GameWin(CustomerLogicObject.CurrentDisk);
-                FeedbackDisplay.ClearResults();
-                Debug.Log("You Win!");
-            } else {
-                FeedbackDisplay.AddResult(CustomerLogicObject.GuessHistory[^1], CustomerLogicObject.GuessResult[^1]);
-                AudioManager.Instance.PlaySound("incorrect");
-                Head.SetFace(Faces.Angry, 4f);
+    private void Update() {
+        if (UseTimer) { 
+            _timeRemaining -= Time.deltaTime;
+            float r = (TimeMax - _timeRemaining) / TimeMax;
+            TimerUI.GetComponent<Image>().color = new Color(r, 1-r, 0.0f);
+            if (_timeRemaining <= 0) {
+                OnGameLose(RoundManager.CurrentDisk);
             }
-            ButtonSwitcher.EnableButtons();
-            _timeRemaining = Mathf.Clamp(_timeRemaining, _timeRemaining, TimeMax);
-        }
-        if (CustomerLogicObject.TurnsLeft == 0)
-        {
-            GameLose();
-            FeedbackDisplay.ClearResults();
-        }
-        float r = (TimeMax - _timeRemaining)/TimeMax;
-        if (UseTimer) {TimerUI.GetComponent<Image>().color = new Color(r, 1-r, 0.0f);}
+        }  
+
+        // Debug.Log(_timeRemaining);      
     }
 
-    private void OnScoreChange(int score)
-    {
+    private void UpdateScore(int score) {
+        GamesSold = score;
         ScoreCounter.GetComponent<TMP_Text>().text = (GamesSold*100).ToString();
     }
 
@@ -88,28 +89,53 @@ public class GameManager : MonoBehaviour
     {
         GameObject floppy = Instantiate(solution.Model, FloppySpawnTransform.position, FloppySpawnTransform.rotation);
         floppy.transform.Find("CoverArt").GetComponent<MeshRenderer>().material.SetTexture("_MainTex", solution.BoxArt);
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(2.0f);
         Destroy(floppy);
+
     }
 
-    private void GameWin(DiskData solution) {
-        StartCoroutine(FloppyTime(solution));
-        GamesSold ++;
-        OnScoreChange(GamesSold);
+    private void NewRound()
+    {
+        RoundManager.NewRound();
+        TargetManager.NumTags = RoundManager.NumTags;
+        TargetManager.CurrentDisk = RoundManager.CurrentDisk;
+        FeedbackDisplay.ClearResults();
+    }
+    private void OnRoundWin(DiskData disk) {
+        StartCoroutine(FloppyTime(disk));
+        UpdateScore(GamesSold + 1);
         AudioManager.Instance.PlaySound("success");
         Head.SetFace(Faces.Happy, 8f);
-        _timeRemaining += BaseTimeAddedPerWin;
-        _timeRemaining += CustomerLogicObject.TurnsLeft * TimeAddedPerRemainingGuess;
-        CustomerLogicObject.ResetCustomerLogic();
-
+        _timeRemaining += TimeAddedPerWin;
+        _timeRemaining += RoundManager.TurnsLeft * TimeAddedPerRemainingGuess;
+        NewRound();
     }
 
-    private void GameLose() {
+    private void OnTargetHit(Tag guess) {
+        ButtonSwitcher.DisableButton(guess);
+    }
+
+    private void OnGuess(Tag[] guess) {
+        // Play the guess submission SFX and do whatever.
+        RoundManager.SubmitGuess(guess);
+        ButtonSwitcher.EnableButtons();
+        
+    }
+
+    private void OnIncorrectGuess() {
+        // Play the bad guess SFX etc etc.
+        FeedbackDisplay.AddResult(RoundManager.GuessHistory[^1], RoundManager.ResultHistory[^1]);
+        Head.SetFace(Faces.Angry, 4f);
+    }
+
+    private void OnRoundLose(DiskData disk) {
+        OnGameLose(disk);
+    }
+
+    private void OnGameLose(DiskData disk) {
         PlayerPrefs.SetInt("Score", GamesSold * 100);
         AudioManager.Instance.PlaySound("game over");
         AudioManager.Instance.PlayMusicLoop(false);
         SceneManager.LoadScene("GameOver");        
     }
-
-
 }

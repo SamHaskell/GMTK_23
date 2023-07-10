@@ -4,21 +4,21 @@ using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 { 
-    public PlayerControls input;
-    public bool menuActive = false, optionsActive = false;
-    public GameObject settingsWindow;
+    public PlayerControls Input;
+    public bool MenuActive = false, OptionsActive = false;
+    public GameObject SettingsWindow;
     public Slider MUSCSlider, SFXSlider;
-    public float mouseSens = 0.1f, volume = 1.0f, shit = 1.0f;
+    public float MouseSensitivity = 0.1f, Volume = 1.0f, Shit = 1.0f;
     void Awake(){
-        input = new PlayerControls();
+        Input = new PlayerControls();
         // input.Walking.Pause.performed += ctx => OnPause();
     }
     private void OnEnable() {
-        input.Enable();
+        Input.Enable();
     }
 
     private void OnDisable(){
-        input.Disable();
+        Input.Disable();
     }
     void Start()
     {
@@ -33,7 +33,7 @@ public class PauseMenu : MonoBehaviour
         // vcam.GetCinemachineComponent<CinemachinePOV>().m_HorizontalAxis.m_MaxSpeed = mouseSens;
         // vcam.GetCinemachineComponent<CinemachinePOV>().m_VerticalAxis.m_MaxSpeed = mouseSens;
         Time.timeScale = 1.0f;
-        menuActive = false;
+        MenuActive = false;
         // pauseMenu.SetActive(false);
         // cursorMenu.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
@@ -63,8 +63,8 @@ public class PauseMenu : MonoBehaviour
         PlayerPrefs.SetFloat("MasterVol", SFXSlider.value);
     }
     public void OnOptions(){ 
-        optionsActive = !optionsActive;
-        settingsWindow.SetActive(optionsActive);
+        OptionsActive = !OptionsActive;
+        SettingsWindow.SetActive(OptionsActive);
         
     }
     public void OnMainMenu(){ 

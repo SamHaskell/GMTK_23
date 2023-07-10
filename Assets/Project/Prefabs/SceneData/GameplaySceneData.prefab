@@ -386,7 +386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attenuationObject: {fileID: 0}
+  attenuationObject: {fileID: 7870480928880507317}
 --- !u!1 &6774774344322079698
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,7 +488,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8716132364939727715}
   - component: {fileID: 171144373275048930}
-  - component: {fileID: 1842980712001429779}
+  - component: {fileID: 7953920538623865740}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -523,23 +523,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a53833a27587aa149864d987674e900b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CustomerLogicObject: {fileID: 1842980712001429779}
-  FloppySpawnTransform: {fileID: 0}
+  RoundManager: {fileID: 7953920538623865740}
+  TargetManager: {fileID: 0}
   IsTutorial: 0
   ButtonSwitcher: {fileID: 0}
   FeedbackDisplay: {fileID: 0}
-  TimerUI: {fileID: 0}
-  ScoreCounter: {fileID: 0}
   TagSetPrefab: {fileID: 1114203900708510817, guid: 75c73c42881bcf84b94c6de19f62e082,
     type: 3}
+  Head: {fileID: 0}
+  ScoreCounter: {fileID: 0}
   GamesSold: 0
+  TimerUI: {fileID: 0}
   UseTimer: 0
   InitialTime: 240
-  BaseTimeAddedPerWin: 60
+  TimeAddedPerWin: 60
   TimeAddedPerRemainingGuess: 10
   TimeMax: 240
-  head: {fileID: 0}
---- !u!114 &1842980712001429779
+--- !u!114 &7953920538623865740
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -548,15 +548,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 7870480928880507317}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d61dc60670d4f7d4dab1f79cb70a27de, type: 3}
+  m_Script: {fileID: 11500000, guid: 416b0a077c1904547886e8026e0a8e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CheckResult: 0
   PossibleDisks:
   - {fileID: 11400000, guid: fc7a29b63d559104fa7a23db356aee7a, type: 2}
+  - {fileID: 11400000, guid: 6dd7368dddc3245089c1680387576dd5, type: 2}
+  - {fileID: 11400000, guid: 43e0f9b6f0e474bc18687559f23e053d, type: 2}
+  - {fileID: 11400000, guid: af9270358121cc34699ce284bfbdc535, type: 2}
+  - {fileID: 11400000, guid: 79fc5c48384d44aebbe74832c1ab4fa0, type: 2}
+  - {fileID: 11400000, guid: 79b1ac16dce4e47da8c89aecd4698c4d, type: 2}
+  - {fileID: 11400000, guid: 78a762088729b4a45b1209283a64de03, type: 2}
+  - {fileID: 11400000, guid: 784fd629a660c4b6484bf850bebc22ec, type: 2}
+  - {fileID: 11400000, guid: 0d21e44383de851438c324960f4b395e, type: 2}
+  - {fileID: 11400000, guid: bb1b2b03d9f0b41458466fe050123039, type: 2}
+  - {fileID: 11400000, guid: b44ca89b3dfcb473abacbfd55649734a, type: 2}
   CurrentDisk: {fileID: 0}
   MaxTurns: 8
-  SetSize: 3
+  NumTags: 3
   TurnsLeft: 0
 --- !u!1001 &4208860470737416623
 PrefabInstance:
