@@ -825,7 +825,7 @@ PrefabInstance:
     - target: {fileID: 171144373275048930, guid: f2a26a878f1a14059bf967a3f0b966db,
         type: 3}
       propertyPath: TimeMax
-      value: 60
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 171144373275048930, guid: f2a26a878f1a14059bf967a3f0b966db,
         type: 3}
@@ -845,7 +845,7 @@ PrefabInstance:
     - target: {fileID: 171144373275048930, guid: f2a26a878f1a14059bf967a3f0b966db,
         type: 3}
       propertyPath: InitialTime
-      value: 60
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 171144373275048930, guid: f2a26a878f1a14059bf967a3f0b966db,
         type: 3}
@@ -870,7 +870,7 @@ PrefabInstance:
     - target: {fileID: 171144373275048930, guid: f2a26a878f1a14059bf967a3f0b966db,
         type: 3}
       propertyPath: TimeAddedPerWin
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 171144373275048930, guid: f2a26a878f1a14059bf967a3f0b966db,
         type: 3}
