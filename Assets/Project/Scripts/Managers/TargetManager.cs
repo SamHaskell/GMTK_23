@@ -15,9 +15,13 @@ public class TargetManager : MonoBehaviour {
     public event Action<Tag[]> OnGuess;
     public event Action<Tag> OnTargetHit;
 
-    void Awake() {
-    }
     void Start() {
+        SpawnTags();
+    }
+
+    public void ResetTags()
+    {
+        DestroyTags();
         SpawnTags();
     }
 
@@ -27,10 +31,9 @@ public class TargetManager : MonoBehaviour {
         }
     }
     
-    void SpawnTags() {
+    public void SpawnTags() {
         _targets = new GameObject[NumTags];
         _guess = new Tag[NumTags];
-        Debug.Log(_guess.Length);
         _targetsHit = 0;
         for (int i = 0; i < NumTags; i++) {
             _targets[i] = Instantiate(TargetPrefab, TargetTransforms[i].position, TargetTransforms[i].rotation);
@@ -43,9 +46,8 @@ public class TargetManager : MonoBehaviour {
     IEnumerator OnSubmitGuess(Tag[] guess)
     {
         OnGuess?.Invoke(guess);
-        DestroyTags();
         yield return new WaitForSeconds(2.0f);
-        SpawnTags();
+        ResetTags();
     }
 
     IEnumerator SelfDestruct(float timeDelay)
@@ -61,9 +63,6 @@ public class TargetManager : MonoBehaviour {
         OnTargetHit?.Invoke(guess);
         if (_targetsHit == NumTags) {
             _targetsHit = 0;
-            Debug.Log(_guess[0]);
-            Debug.Log(_guess[1]);
-            Debug.Log(_guess[2]);
             StartCoroutine(OnSubmitGuess(_guess));
         }
     }

@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     public float TimeAddedPerWin = 60;
     public float TimeAddedPerRemainingGuess = 10;
     public float TimeMax = 240;
+
     private void Awake() {
         if (Instance == null) {
             Instance = this;
@@ -37,34 +38,29 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         }
 
-        if (TargetManager != null) {
-            TargetManager.OnGuess += OnGuess;
-            TargetManager.OnTargetHit += OnTargetHit;
+        if (IsTutorial) {
+            Debug.Log("Starting tutorial end timer");
+            StartCoroutine(TutorialTimeCoRo());
         }
-        if (RoundManager != null) {
-            RoundManager.OnCorrectGuess += OnRoundWin;
-            RoundManager.OnIncorrectGuess += OnIncorrectGuess;
-            RoundManager.OnRoundLose += OnRoundLose;
-        }
+
+        TargetManager.OnGuess += OnGuess;
+        TargetManager.OnTargetHit += OnTargetHit;
+
+        RoundManager.OnCorrectGuess += OnRoundWin;
+        RoundManager.OnIncorrectGuess += OnIncorrectGuess;
+        RoundManager.OnRoundLose += OnRoundLose;
     }
 
-    //TODO: Replace this with proper tutorial solution
     private IEnumerator TutorialTimeCoRo() {
         yield return new WaitForSeconds(57.0f);
         SceneManager.LoadScene(1);
     }
 
     private void Start() {
-        //TODO: Replace this with proper tutorial solution
-        if (IsTutorial) {
-            StartCoroutine(TutorialTimeCoRo());
-            IsTutorial = false;
-        } else {
-            UpdateScore(0);
-            _timeRemaining = InitialTime;
-            PlayerPrefs.SetInt("Score", 0);
-            NewRound();
-        }
+        UpdateScore(0);
+        _timeRemaining = InitialTime;
+        PlayerPrefs.SetInt("Score", 0);
+        NewRound();
     }
 
     private void Update() {
@@ -75,9 +71,7 @@ public class GameManager : MonoBehaviour
             if (_timeRemaining <= 0) {
                 OnGameLose(RoundManager.CurrentDisk);
             }
-        }  
-
-        // Debug.Log(_timeRemaining);      
+        }       
     }
 
     private void UpdateScore(int score) {
@@ -91,7 +85,6 @@ public class GameManager : MonoBehaviour
         floppy.transform.Find("CoverArt").GetComponent<MeshRenderer>().material.SetTexture("_MainTex", solution.BoxArt);
         yield return new WaitForSeconds(2.0f);
         Destroy(floppy);
-
     }
 
     private void NewRound()
@@ -99,8 +92,10 @@ public class GameManager : MonoBehaviour
         RoundManager.NewRound();
         TargetManager.NumTags = RoundManager.NumTags;
         TargetManager.CurrentDisk = RoundManager.CurrentDisk;
+        TargetManager.ResetTags();
         FeedbackDisplay.ClearResults();
     }
+
     private void OnRoundWin(DiskData disk) {
         StartCoroutine(FloppyTime(disk));
         UpdateScore(GamesSold + 1);
